@@ -1,0 +1,88 @@
+MA COLLECTION ONE PIECE TCG V4 — TÉLÉPHONE + ORDINATEUR
+========================================================
+Version du 21 novembre 2026
+
+AVANT TOUT
+- Dans la V3 sur ton ordinateur, clique sur « Sauvegarde JSON ». Garde ce fichier à l'abri.
+- Ne supprime pas la V3 avant d'avoir importé la sauvegarde dans la V4.
+- La V4 conserve les numéros et les quantités, ainsi que les notes V3.
+
+UTILISATION IMMÉDIATE
+- Fichier One_Piece_TCG_V4_Mobile_Ordinateur.html : ouvre-le sur ordinateur dans Chrome/Edge.
+- En haut, clique sur « Restaurer » et sélectionne la sauvegarde JSON de la V3.
+- Télécharge une nouvelle sauvegarde JSON après vérification.
+- Pour déplacer ces données vers ton téléphone SANS cloud, transfère le fichier JSON par AirDrop,
+  iCloud Drive ou un autre moyen de ton choix, puis importe-le dans la V4 ouverte sur le téléphone.
+  C'est un transfert manuel, pas une synchronisation automatique.
+- Sur iPhone, l'aperçu de fichier HTML dans Fichiers ne garantit pas l'exécution de l'application.
+  La méthode recommandée consiste à héberger les fichiers du ZIP sur une adresse HTTPS.
+
+APPLICATION MOBILE INSTALLABLE ET MISE A JOUR DE PRIX AUTOMATISÉE
+1. Crée un compte GitHub si nécessaire, puis un dépôt public vide (par exemple onepiece-collection).
+2. Décompresse One_Piece_TCG_V4_Application_Mobile.zip.
+3. Dépose le CONTENU de ce dossier à la racine du dépôt (index.html, manifest.webmanifest,
+   service-worker.js, icon-192.png, icon-512.png, tools/, .github/workflows/ etc.).
+   IMPORTANT : conserve le dossier .github ; il peut être caché sur certains systèmes.
+4. Dans GitHub > Settings > Pages > Build and deployment, choisis « GitHub Actions ».
+5. Dans Actions, lance « Publication de l'application et cours Cardmarket hebdomadaires »
+   via « Run workflow » si le déploiement n'a pas démarré automatiquement.
+6. Ton site sera du type https://NOM-UTILISATEUR.github.io/onepiece-collection/ .
+7. Sur iPhone ouvre ce site dans Safari > Partager > Sur l'écran d'accueil.
+   Sur Android, ouvre-le dans Chrome > menu > Installer l'application.
+8. Ouvre exactement le même lien HTTPS sur ton ordinateur.
+
+Une tâche GitHub Actions est configurée tous les lundis à 06h12 UTC. Elle télécharge
+LES DEUX fichiers publics de Cardmarket, produit un fichier de cotations compact, puis republie
+l'application. Le navigateur vérifie à l'ouverture la fraîcheur de ce relevé. Les tâches planifiées
+Github peuvent être retardées ou suspendues si le dépôt devient inactif. La mise à jour nécessite
+que GitHub Pages et GitHub Actions fonctionnent et que la source Cardmarket reste disponible.
+
+SYNCHRONISATION PRIVÉE AUTOMATIQUE ENTRE APPAREILS
+La synchronisation automatique exige un service cloud personnel ; rien n'est connecté d'office.
+1. Sur https://supabase.com/ , crée un projet et active la connexion email/mot de passe.
+2. Dans Supabase > SQL Editor, exécute schema_supabase.sql une seule fois.
+3. Copie uniquement Project URL et la clé « anon / publishable » publique dans la section
+   « Synchronisation » de l'application ; ne colle JAMAIS de clé service_role ou secrète.
+4. Indique ton email et mot de passe dans le formulaire et crée ton compte.
+   Confirme l'email si le projet Supabase le demande.
+5. Sur ton ordinateur, restaure d'abord ton JSON V3, connecte-toi puis « Envoyer mes données au cloud ».
+6. Sur le téléphone, utilise le MEME projet Supabase et le MEME compte, connecte-toi puis
+   « Recevoir les données cloud ». Les modifications ultérieures sont envoyées après chaque édition
+   et reçues lors des ouvertures suivantes.
+7. Continue d'exporter une copie JSON datée une fois par mois et après un gros inventaire.
+
+Le dépôt GitHub héberge seulement le CODE, les références publiques et les prix.
+Ton inventaire privé n'y est pas publié. L'inventaire est stocké localement et, si tu l'actives,
+chez Supabase, limité à ton compte authentifié par la sécurité RLS du SQL fourni.
+
+FICHES ET COULEURS
+- Couleurs de jeu dans le tableau et la fiche : rouge, vert, bleu, violet, jaune, noir,
+  y compris combinaisons à deux couleurs.
+- Filtre « Couleur » indépendant des filtres extension, rareté et possession.
+- Clique sur l'image ou le nom pour afficher les statistiques : coût, puissance, compteur,
+  catégorie, attributs, familles, effet et trigger, quand disponibles dans le catalogue public.
+- Les stats et photos se chargent depuis le dépôt public Punk Records / Bandai, sans garantie
+  de présence ou de disponibilité pour toutes les éditions.
+
+PRIX CARDMARKET
+- Source : téléchargements publics de Cardmarket pour One Piece (jeu numéro 18).
+  Catalogue : https://downloads.s3.cardmarket.com/productCatalog/productList/products_singles_18.json
+  Prix      : https://downloads.s3.cardmarket.com/productCatalog/priceGuide/price_guide_18.json
+- Après chaque actualisation hebdomadaire, les produits déjà associés actualisent leur prix.
+- Si un numéro correspond à un SEUL produit Cardmarket, le prix de la carte CLASSIQUE peut
+  être rempli automatiquement. Sinon il faut choisir l'impression correcte dans sa fiche.
+- Les parallèles, Manga Rares, promotions et rééditions ne sont jamais assimilées
+  automatiquement au produit le moins cher : la sélection précise est nécessaire.
+- Prix en EUR = indicateur de tendance du guide public, NON une offre garantie.
+  Il ne distingue pas l'état ni la langue de la carte ; aucun frais d'envoi n'est inclus.
+- Les fichiers officiels peuvent être trop gros ou bloqués par le navigateur si la V4 est
+  ouverte en fichier HTML local. La publication GitHub Pages est la méthode privilégiée.
+- Si besoin, télécharge manuellement les deux fichiers officiels, puis importe-les dans
+  la section « Prix Cardmarket ». L'application conserve le rapprochement ID produit.
+- Aucun tarif n'est inventé lorsqu'un produit n'est pas rapproché correctement.
+
+SOURCES
+Catalogue et statistiques : https://github.com/buhbbl/punk-records
+Cardmarket : https://help.cardmarket.com/en/cardmarket-api
+Distribution hors ligne : les photos et les prix ne sont pas copiés en totalité dans l'app.
+Code de l'application et données officielles soumis à leurs licences et conditions respectives.
