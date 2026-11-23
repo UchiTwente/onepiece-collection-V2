@@ -100,19 +100,19 @@ footer{margin:28px 3px 0;color:#7f96af;font-size:12px;line-height:1.6}footer a{c
  <div id="pagination" class="pagination" hidden><span id="pageInfo" class="hint"></span><div class="paging"><button id="prevPage" class="small">← Précédent</button><span id="pageCounter" class="hint"></span><button id="nextPage" class="small">Suivant →</button></div></div>
  </section>
 </div>
-<details class="priceSettings" id="priceSettings"><summary>💶 Prix Cardmarket — mise à jour et association des versions</summary>
-<p>Deux fichiers officiels publics permettent de mettre les cours en correspondance avec les cartes, mais plusieurs impressions partagent un même code. Pour un prix fiable, choisis le produit Cardmarket exact dans la fiche de ta carte. Les montants non associés restent non vérifiés. Mise à jour tentée au démarrage si le dernier relevé date de 7 jours ou plus ; en mode fichier local, le navigateur peut bloquer les téléchargements directs.</p>
+<details class="priceSettings" id="priceSettings"><summary>💶 Prix Cardmarket — prix indicatifs et versions exactes</summary>
+<p>Deux fichiers officiels publics permettent de mettre les cours en correspondance avec les cartes, mais plusieurs impressions partagent un même code. Pour un prix fiable, choisis le produit Cardmarket exact dans la fiche de ta carte. Quand plusieurs produits correspondent à une référence, un prix minimum indicatif est affiché, sans être compté dans la valeur de collection. Mise à jour tentée au démarrage si le dernier relevé date de 7 jours ou plus ; en mode fichier local, le navigateur peut bloquer les téléchargements directs.</p>
 <div class="toolrow"><button id="refreshPrices">↻ Vérifier les prix maintenant</button><span class="statusline" id="priceStatus">Aucune cote chargée</span></div>
 <div class="toolrow"><a target="_blank" rel="noopener" href="https://downloads.s3.cardmarket.com/productCatalog/productList/products_singles_18.json">Télécharger le catalogue de produits officiel</a> · <a target="_blank" rel="noopener" href="https://downloads.s3.cardmarket.com/productCatalog/priceGuide/price_guide_18.json">Télécharger les cours officiels</a></div>
 <div class="toolrow"><label>Importer catalogue <input id="cmProductFile" type="file" accept=".json,application/json"></label><label>Importer prix <input id="cmPriceFile" type="file" accept=".json,application/json"></label><button id="applyPrices">Importer les fichiers sélectionnés</button></div>
 <p id="priceCoverage">Les prix de variantes doivent être vérifiés produit par produit. Aucune valeur fictive n’est affichée.</p>
 </details>
-<details class="priceSettings" id="cloudSettings"><summary>☁ Synchronisation entre téléphone et ordinateur (facultative)</summary>
-<p>Pour une synchronisation automatique privée, configure ton projet Supabase personnel et utilise le <code>schema_supabase.sql</code> fourni. <strong>Ne colle jamais une clé secrète/service_role</strong> : utilise seulement une clé publique/anon et des règles RLS. Ouvre cette application sous un même lien HTTPS sur les deux appareils pour l'installation et la synchronisation.</p>
+<details class="priceSettings" id="cloudSettings"><summary>☁ Synchronisation automatique PC ↔ iPhone (activer une seule fois)</summary>
+<p>Configuration : (1) crée ton projet sur <a href="https://supabase.com/dashboard/projects" target="_blank" rel="noopener">Supabase</a> ; (2) exécute le SQL du fichier <code>schema_supabase.sql</code> dans SQL Editor ; (3) récupère <em>Project URL</em> et <em>publishable key / anon key</em> dans les paramètres API du projet ; (4) connecte-toi avec le même compte sur PC et iPhone. Commence par restaurer ta collection sur le PC et l’envoyer au cloud.</p><p>Pour une synchronisation automatique privée, configure ton projet Supabase personnel et utilise le <code>schema_supabase.sql</code> fourni. <strong>Ne colle jamais une clé secrète/service_role</strong> : utilise seulement une clé publique/anon et des règles RLS. Ouvre cette application sous un même lien HTTPS sur les deux appareils pour l'installation et la synchronisation.</p>
 <div class="cloudfields"><label>URL Supabase de ton projet <input id="cloudUrl" type="url" placeholder="https://xxxxx.supabase.co" autocomplete="off"></label><label>Clé publique / publishable <input id="cloudKey" type="text" placeholder="sb_publishable_... ou anon" autocomplete="off"></label><label>Email <input id="cloudEmail" type="email" placeholder="mon.email@exemple.com" autocomplete="username"></label><label>Mot de passe <input id="cloudPassword" type="password" autocomplete="current-password" placeholder="Ton mot de passe Supabase"></label></div>
 <div class="cloudactions"><button id="cloudConnect">Se connecter</button><button id="cloudSignup">Créer mon compte</button><button id="cloudPull">⬇ Recevoir les données cloud</button><button id="cloudPush">⬆ Envoyer mes données au cloud</button><button id="cloudLogout">Se déconnecter</button></div>
 <div class="statusline" id="cloudStatus">Non connecté · La collection est enregistrée uniquement sur cet appareil.</div>
-<p>Les modifications sont envoyées vers le cloud après connexion et reçues lors des ouvertures suivantes. Si deux appareils modifient la même carte hors ligne, la version avec la date de modification la plus récente est privilégiée. Exporte aussi une sauvegarde JSON indépendante du service cloud.</p>
+<p>Après connexion, l’application échange les changements au démarrage, à chaque retour dans l’app et périodiquement lorsqu’elle est ouverte. Une modification est envoyée après quelques secondes. En cas de déconnexion Internet, elle reste conservée sur ton appareil jusqu’à la prochaine synchronisation.</p><p>Les modifications sont envoyées vers le cloud après connexion et reçues lors des ouvertures suivantes. Si deux appareils modifient la même carte hors ligne, la version avec la date de modification la plus récente est privilégiée. Exporte aussi une sauvegarde JSON indépendante du service cloud.</p>
 </details>
 <footer><p><b>Enregistrement :</b> les cases cochées, les quantités et les notes sont sauvegardées localement dans ce navigateur. <b>Avant de changer de version ou de navigateur, exporte ta sauvegarde JSON puis restaure-la dans la nouvelle version.</b> Sur Chrome et Edge, le bouton « Activer la sauvegarde sur disque » permet aussi de synchroniser automatiquement un fichier JSON choisi pendant la session : rouvre ce fichier lors des prochaines sessions. Conserve une copie JSON datée sur un autre support. Les visuels s’affichent directement dans le tableau, mais leur chargement nécessite Internet ; ils ne sont pas stockés dans ce fichier HTML.</p><p><b>Catalogue :</b> données provenant du dépôt <a href="https://github.com/buhbbl/punk-records" target="_blank" rel="noopener">Punk Records</a> (données reprises des listes Bandai). Les index anglais et français sont fusionnés pour éviter la disparition des cartes classiques anciennes : si une source ne répond pas, les numéros de référence restent disponibles, mais les métadonnées non vérifiées sont signalées. Les versions <code>_p1, _p2…</code> et <code>_r1…</code> sont suivies séparément. Elles sont regroupées sous le numéro d’origine, même lorsqu’elles ont été distribuées dans une autre extension. Images © Eiichiro Oda / Shueisha / Toei Animation / Bandai. Cet outil personnel n’est pas affilié à Bandai.</p></footer>
 </main>
@@ -416,6 +416,86 @@ async function pullCloud(alsoPush=false){try{const cli=await ensureCloud();const
 async function pushCloud(quiet=false){try{const cli=await ensureCloud();const {data:auth}=await cli.auth.getUser();cloudUser=auth.user;if(!cloudUser)throw Error('Connecte-toi d’abord.');const backup=buildBackup();const {error}=await cli.from('onepiece_collections').upsert({user_id:cloudUser.id,payload:backup,updated_at:new Date().toISOString()},{onConflict:'user_id'});if(error)throw error;cloudStatus('Collection synchronisée le '+new Date().toLocaleString('fr-FR')+' · '+cloudUser.email,true)}catch(e){if(!quiet)cloudStatus('Envoi cloud : '+e.message)}}
 function scheduleCloudSave(){if(!cloudUser)return;clearTimeout(cloudTimer);cloudTimer=setTimeout(()=>pushCloud(true),1900)}
 $('cloudSignup').addEventListener('click',()=>signInCloud(true));$('cloudConnect').addEventListener('click',()=>signInCloud(false));$('cloudPull').addEventListener('click',()=>pullCloud(false));$('cloudPush').addEventListener('click',()=>pushCloud(false));$('cloudLogout').addEventListener('click',async()=>{if(cloudClient)await cloudClient.auth.signOut();cloudUser=null;cloudStatus('Déconnecté. Les données de l’appareil restent présentes.')});
+
+/* V4.1 : meilleures indications de prix sans confusion entre impressions,
+   et synchronization bidirectionnelle sur retour dans l'app. */
+function v41CandidatePrices(c){
+  const group=cmByCode.get(baseId(c.id))||[];
+  const values=group.map(p=>({product:p,quote:cmPrices.get(p.id)})).filter(x=>x.quote&&Number.isFinite(x.quote.value));
+  if(!values.length)return null;
+  const nums=values.map(x=>x.quote.value);
+  return {min:Math.min(...nums),max:Math.max(...nums),count:values.length};
+}
+priceMarkup=function(c){
+  const exact=priceQuote(c);
+  if(exact)return `<span class="priceinfo" title="Prix tendance pour le produit Cardmarket ${escapeHTML(exact.productId)}">${eur(exact.value)}<small>${exact.automatic?'produit unique':'version confirmée'}</small></span>`;
+  const range=v41CandidatePrices(c);
+  if(range)return `<span class="priceinfo estimate" title="Prix indicatifs pour ${range.count} produits différents du numéro ${escapeHTML(baseId(c.id))} : ${eur(range.min)} à ${eur(range.max)}. Sélectionne la bonne version dans la fiche pour connaître son prix exact.">dès ${eur(range.min)}<small>indicatif · à vérifier</small></span>`;
+  return `<span class="priceinfo none" title="Prix Cardmarket indisponible pour cette référence ; vérifier le chargement des cotations">—<small>prix indisponible</small></span>`;
+};
+const v41OldRenderModalPrice=renderModalPrice;
+renderModalPrice=function(c){
+  v41OldRenderModalPrice(c);
+  if(!c || priceQuote(c))return;
+  const r=v41CandidatePrices(c);
+  if(r){
+    $('modalPrice').textContent=eur(r.min)+(r.max>r.min?' à '+eur(r.max):'');
+    $('modalPriceHint').textContent=`Fourchette INDICATIVE pour ${r.count} produits Cardmarket associés au numéro ${baseId(c.id)} (versions mélangées). Choisis l'impression correspondant à ta carte ci-dessous pour obtenir une cotation attribuable à ta collection.`;
+  } else {
+    $('modalPriceHint').textContent=(priceState.at?'Aucune cotation exploitable pour cette référence.':'Aucune liste de prix chargée : ouvre « € Tarifs Cardmarket » et clique sur « Vérifier les prix maintenant ».');
+  }
+};
+// Un envoi ne doit pas écraser les modifications récentes d'un autre appareil :
+// télécharger puis fusionner par horodatage avant chaque écriture.
+let v41CloudWork=null,v41PendingWrite=false,v41LastPassive=0;
+async function v41CloudSync(wantWrite=false,quiet=false){
+  if(v41CloudWork){v41PendingWrite=v41PendingWrite||wantWrite;return v41CloudWork;}
+  v41CloudWork=(async()=>{
+    const client=await ensureCloud();
+    const {data:auth,error:authError}=await client.auth.getUser();
+    if(authError)throw authError;
+    cloudUser=auth?.user||null;
+    if(!cloudUser)throw Error('Connecte-toi avec ton compte Supabase.');
+    const {data,error}=await client.from('onepiece_collections').select('payload').eq('user_id',cloudUser.id).maybeSingle();
+    if(error)throw error;
+    const remote=data?.payload?.collection||{};
+    const merged=syncMerged(collection,remote).out;
+    const localChanged=JSON.stringify(collection)!==JSON.stringify(merged);
+    const remoteChanged=JSON.stringify(remote)!==JSON.stringify(merged);
+    if(localChanged){
+      Object.keys(collection).forEach(k=>delete collection[k]);Object.assign(collection,merged);
+      if(Array.isArray(data?.payload?.card_snapshot)&&data.payload.card_snapshot.length){
+        importedCatalog=data.payload.card_snapshot.filter(c=>c&&valid(c.id));
+        try{localStorage.setItem('op-tcg-owned-card-metadata-v5',JSON.stringify(importedCatalog))}catch{}
+      }
+      persist();catalog=includeOwnedOrphans(catalog);renderAll();
+    }
+    if(wantWrite || remoteChanged || !data){
+      const backup=buildBackup();
+      const {error:writeError}=await client.from('onepiece_collections').upsert({user_id:cloudUser.id,payload:backup,updated_at:new Date().toISOString()},{onConflict:'user_id'});
+      if(writeError)throw writeError;
+    }
+    cloudStatus('✓ Synchronisé · '+cloudUser.email+' · '+new Date().toLocaleString('fr-FR'),true);
+  })();
+  try{return await v41CloudWork}
+  catch(e){cloudStatus('⚠ Synchronisation interrompue : '+(e?.message||e));if(!quiet)showBanner('Les modifications restent enregistrées sur cet appareil. Vérifie ta connexion et le compte Supabase.','warn')}
+  finally{
+    v41CloudWork=null;
+    if(v41PendingWrite){v41PendingWrite=false;setTimeout(()=>v41CloudSync(true,true),250)}
+  }
+}
+pullCloud=async function(alsoPush=false){return v41CloudSync(alsoPush,false)};
+pushCloud=async function(quiet=false){return v41CloudSync(true,quiet)};
+function v41PassiveSync(){
+ if(!cloudUser || document.visibilityState==='hidden' || !navigator.onLine)return;
+ if(Date.now()-v41LastPassive<12000)return;
+ v41LastPassive=Date.now();v41CloudSync(false,true);
+}
+window.addEventListener('focus',v41PassiveSync);
+window.addEventListener('online',v41PassiveSync);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')v41PassiveSync()});
+setInterval(v41PassiveSync,45000);
+
 // Prevent automatic cloud sync until user has deliberately configured it. Restore session otherwise.
 if(storedCloud.url&&storedCloud.key){ensureCloud().then(()=>{if(cloudUser){cloudStatus('Session cloud retrouvée : '+cloudUser.email,true);pullCloud(false)}}).catch(()=>{})}
 rebuildPriceIndex();priceOverview();
