@@ -1,6 +1,31 @@
-const CACHE='onepiece-app-v43-20261123';
-self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'])));self.skipWaiting()});
-self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(x=>x.startsWith('onepiece-app-')&&x!==CACHE).map(x=>caches.delete(x))))));
-self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(u.origin!==self.location.origin||e.request.method!=='GET')return;if(/prix_cardmarket\.json|cards_by_id\.json/.test(u.pathname))return;
-if(e.request.mode==='navigate')e.respondWith(fetch(e.request).catch(()=>caches.match('./index.html')));
-else if(/\.(?:png|webmanifest|js)$/.test(u.pathname))e.respondWith(caches.match(e.request).then(c=>c||fetch(e.request)))});
+const SHELL='onepiece-app-v5-20261123';
+const PHOTOS='onepiece-confirmed-photos-v5';
+const FILES=['./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
+self.addEventListener('install',event=>{event.waitUntil(caches.open(SHELL).then(cache=>cache.addAll(FILES)));self.skipWaiting()});
+self.addEventListener('activate',event=>{event.waitUntil(Promise.all([self.clients.claim(),caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('onepiece-app-')&&key!==SHELL).map(k=>caches.delete(k))))]))});
+const isPhoto=url=>/^https:$/.test(url.protocol)&&/^(en|fr|asia-en)\.onepiece-cardgame\.com$|^one-piece\.cards$|^optcg-api\.arjunbansal-ai\.workers\.dev$|^limitlesstcg\.nyc3\.cdn\.digitaloceanspaces\.com$/.test(url.hostname);
+self.addEventListener('fetch',event=>{
+ if(event.request.method!=='GET')return;
+ const url=new URL(event.request.url);
+ if(event.request.destination==='image'&&isPhoto(url)){
+  event.respondWith(caches.open(PHOTOS).then(async cache=>(await cache.match(event.request))||fetch(event.request)));
+  return;
+ }
+ if(url.origin!==self.location.origin)return;
+ if(event.request.mode==='navigate'){
+  event.respondWith(fetch(event.request).then(r=>{if(r.ok){const copy=r.clone();event.waitUntil(caches.open(SHELL).then(c=>c.put('./index.html',copy)))}return r}).catch(()=>caches.match('./index.html')));return;
+ }
+ if(/\.(?:png|webmanifest|js)$/.test(url.pathname))event.respondWith(caches.match(event.request).then(r=>r||fetch(event.request)));
+});
+// Cache ONLY photo URLs that already passed the browser's image onload validation.
+self.addEventListener('message',event=>{
+ if(event.data?.type!=='CACHE_VALID_IMAGE'||typeof event.data.url!=='string')return;
+ try{const url=new URL(event.data.url);if(!isPhoto(url))return;
+ event.waitUntil(caches.open(PHOTOS).then(async cache=>{
+  const req=new Request(url.href,{mode:'no-cors',credentials:'omit',referrerPolicy:'no-referrer'});
+  if(await cache.match(req))return;
+  const response=await fetch(req);
+  if(response.ok||response.type==='opaque')await cache.put(req,response);
+ }).catch(()=>{}))
+ }catch{}
+});
