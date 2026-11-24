@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="color-scheme" content="dark"/><meta name="theme-color" content="#142338"/>
-<title>One Piece TCG V5 — Ma collection · Photos et sauvegarde</title>
+<title>One Piece TCG V6 — Classeur, wishlist et suivi des cours</title>
 <style>
 :root{--bg:#080e19;--panel:#101c2c;--panel2:#142338;--b:#2a3a50;--white:#ecf3fb;--muted:#99aabf;--gold:#f7c76a;--blue:#74c7ff;--green:#7eddad;--pink:#ff98a9}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 40% -20%,#19324c 0,transparent 48%),var(--bg);color:var(--white);font:14px/1.5 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.35;cursor:not-allowed}
@@ -96,12 +96,57 @@ footer{margin:28px 3px 0;color:#7f96af;font-size:12px;line-height:1.6}footer a{c
 .v5-photo-manual{font-size:9px;line-height:1.1;position:absolute;bottom:0;right:0;background:#345c81;color:#fff;padding:2px 3px;border-top-left-radius:3px}
 .imgwrap{position:relative}
 @media(max-width:600px){.photo-tools-v5{padding:9px;gap:6px}.photo-tools-v5 button{padding:8px}.v5-photo-actions input[type=url]{max-width:100%}}
+/* One Piece TCG V6 — personnalisation non intrusive de l'interface V5 */
+[hidden]{display:none!important}
+.v6-tabs{display:flex;gap:9px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;margin:18px 0 13px;padding:2px 1px 10px}
+.v6-tabs button{flex:0 0 auto;border-radius:12px;padding:12px 15px;font-size:13px;white-space:nowrap;border-color:#375471;color:#bcd0e6;background:#12243a}
+.v6-tabs button.active{color:#121b27;background:#f7c76a;border-color:#f7c76a}
+.v6-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 18px}
+.v6-stat{border:1px solid #334b63;border-radius:13px;padding:14px 16px;background:linear-gradient(135deg,#13283e,#112034);min-width:0}
+.v6-stat span{display:block;color:#a9bed1;font-size:11px;letter-spacing:.2px;margin-bottom:4px}
+.v6-stat strong{font-size:21px;line-height:1.25;font-weight:840;letter-spacing:-.4px;font-variant-numeric:tabular-nums}
+.v6-stat small{display:block;color:#9fb7cc;font-size:10px;margin-top:4px}
+.v6-panel{background:#101d2f;border:1px solid #2b425b;border-radius:16px;padding:18px 22px;margin-bottom:20px;min-height:200px}
+.v6-panel h2{font-size:20px;margin:0 0 6px}.v6-panel h3{font-size:15px;margin:0 0 10px}
+.v6-description{color:#a8bed2;font-size:12px;line-height:1.5;margin-bottom:16px}
+.v6-toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}.v6-toolbar select,.v6-toolbar input,.v6-field input,.v6-field select{background:#0c192b;color:#f0f6ff;border:1px solid #395874;border-radius:9px;padding:9px 11px;max-width:100%;min-width:0}
+.v6-toolbar label,.v6-field{font-size:11px;color:#bdd1e4;display:flex;flex-direction:column;gap:5px}
+.v6-toolbar label{min-width:125px}.v6-toolbar input[type=search]{min-width:165px;flex:1}
+.v6-split{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(230px,.7fr);gap:16px}
+.v6-cardbox{border:1px solid #314b63;background:#14263a;border-radius:13px;padding:14px;min-width:0}
+.v6-binder{background:linear-gradient(90deg,#19263a 0%,#0c1727 49.6%,#17293d 50.4%,#0b1728 100%);border:1px solid #3e5673;box-shadow:inset 0 0 28px #030b1455;border-radius:16px;padding:15px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;min-height:420px}
+.v6-binder-item{position:relative;min-width:0;background:#111f32eb;border:1px solid #3b5570;border-radius:11px;padding:10px;display:flex;flex-direction:column;gap:5px;align-items:center;overflow:hidden}
+.v6-binder-item.owned{border-color:#5dbea0}.v6-binder-item .imgwrap{width:min(100%,185px);height:clamp(135px,18vw,258px);cursor:pointer}.v6-binder-item .thumb{width:100%;height:100%}.v6-binder-item .imgfallback{font-size:11px}
+.v6-binder-item .v6-cardname{font-size:12px;font-weight:750;line-height:1.35;text-align:center;min-height:30px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.v6-binder-item .v6-serial{font-weight:850;font-size:11px;color:#b6d8f0}.v6-binder-item .v6-foot{display:flex;align-items:center;justify-content:space-between;width:100%;gap:4px;margin-top:auto}
+.v6-binder-item .v6-foot .qty button{font-size:13px;padding:3px 7px}.v6-binder-item .v6-foot .qty output{min-width:18px;font-size:12px}
+.v6-binder-item .v6-foot .check{width:23px;height:23px;flex:none}.v6-binder-item .v6-location{font-size:10px;color:#a1b6cb;text-align:center;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.v6-binder-footer{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:15px;flex-wrap:wrap}
+.v6-list{display:grid;gap:9px}.v6-list-row{display:grid;grid-template-columns:60px minmax(110px,1fr) auto;align-items:center;gap:12px;padding:11px;border:1px solid #2d4964;background:#14283c;border-radius:12px;min-width:0}
+.v6-list-row .imgwrap{width:52px;height:72px}.v6-list-row .thumb{width:52px;height:72px}.v6-list-row .v6-rowname{font-weight:800;font-size:13px}.v6-list-row .v6-rowmeta{font-size:11px;color:#aec1d2;margin-top:4px}.v6-rowtools{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.v6-tag{display:inline-block;font-size:10px;font-weight:750;border-radius:7px;border:1px solid #42617c;background:#263c56;color:#e6f0fa;padding:3px 7px}.v6-tag.warn{border-color:#b98c44;color:#ffdca5;background:#402b20}.v6-tag.ok{border-color:#4f9575;color:#b8f9d6;background:#1a392f}
+.v6-ok{color:#9aefc8}.v6-warn{color:#ffd499}.v6-notice{border-left:3px solid #d4a75d;background:#2b271f;padding:10px 12px;border-radius:7px;font-size:12px;color:#e8dac6;margin:12px 0}
+.v6-chart{height:160px;width:100%;display:block;background:#0b1b2e;border-radius:10px;padding:5px}
+.v6-bars{display:grid;gap:8px}.v6-barrow{display:grid;grid-template-columns:70px minmax(50px,1fr) 80px;align-items:center;gap:8px;font-size:12px}.v6-bartrack{height:8px;background:#24344a;border-radius:999px;overflow:hidden}.v6-bartrack i{display:block;background:linear-gradient(90deg,#78b6fb,#f7c76a);height:100%;border-radius:999px}
+.v6-timeline{display:grid;gap:7px;max-height:380px;overflow:auto}.v6-event{border-left:2px solid #3e6684;padding:6px 10px;background:#14283a;border-radius:0 7px 7px 0;color:#cde0f0;font-size:12px}.v6-event time{color:#96b4cc;display:block;font-size:10px}
+.v6-pill-alert{background:#4c3128;color:#ffcd9e;border-radius:7px;padding:5px 9px;font-size:11px}
+.v6-mform{border-top:1px solid #344b64;padding-top:14px;margin-top:18px}.v6-mgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.v6-field input[type=checkbox]{accent-color:#79d6a9;width:19px;height:19px}
+.v6-field-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.v6-field-row .v6-field{flex:1 1 120px}
+.v6-help{font-size:11px;color:#99b2ca;margin-top:8px;line-height:1.5}
+.v6-ghostlink{color:#9bd4fc;cursor:pointer;border:0;background:none;text-decoration:underline;text-underline-offset:3px;font-size:12px;padding:2px}
+#v6HistoryCloud{margin-top:8px}
+#v6MarketTable{width:100%;border-collapse:collapse;font-size:12px}#v6MarketTable th,#v6MarketTable td{padding:9px 7px;text-align:left;border-bottom:1px solid #30445d}#v6MarketTable th{color:#a7bdcf}
+.v6-summary .v6-stat:nth-child(1){border-color:#857041}.v6-summary .v6-stat:nth-child(1) strong{color:#fbe0a4}
+@media(max-width:1000px){.v6-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.v6-split{grid-template-columns:1fr}}
+@media(max-width:650px){.v6-panel{padding:13px}.v6-tabs button{padding:10px 12px;font-size:12px}.v6-summary{gap:7px}.v6-stat{padding:10px}.v6-stat strong{font-size:17px}.v6-binder{padding:7px;gap:5px;min-height:0}.v6-binder-item{padding:5px;border-radius:6px;gap:4px}.v6-binder-item .imgwrap{height:clamp(105px,35vw,165px)}.v6-binder-item .v6-cardname{font-size:10px;min-height:28px}.v6-binder-item .v6-serial{font-size:9px}.v6-binder-item .v6-foot{gap:2px}.v6-binder-item .v6-foot .qty button{padding:2px 5px}.v6-binder-item .v6-foot .qty output{font-size:11px;min-width:13px}.v6-list-row{grid-template-columns:48px minmax(0,1fr);gap:9px}.v6-list-row .imgwrap,.v6-list-row .thumb{width:45px;height:62px}.v6-rowtools{grid-column:2;justify-content:flex-start}.v6-mgrid{grid-template-columns:1fr}.v6-toolbar label{flex:1 1 105px}.v6-barrow{grid-template-columns:58px 1fr 76px}}
+
 </style>
 <link rel="manifest" href="./manifest.webmanifest"/><link rel="apple-touch-icon" href="./icon-192.png"/></head>
 <body>
 <main>
 <header>
-  <div class="brand"><div class="emblem" aria-hidden="true">☠</div><div><div class="eyebrow">Collection personnelle · One Piece TCG</div><h1>Mon inventaire de cartes · V4.3</h1><p class="sub">Toutes les séries OP, EB et PRB · classiques, parallèles et autres finitions</p></div></div>
+  <div class="brand"><div class="emblem" aria-hidden="true">☠</div><div><div class="eyebrow">Mon espace collection · One Piece TCG</div><h1>Ma collection One Piece TCG · V6</h1><p class="sub">Toutes les séries OP, EB et PRB · classiques, parallèles et autres finitions</p></div></div>
   <div class="actions"><button id="refresh" title="Actualiser le catalogue depuis la source publique">↻ Actualiser</button><button id="exportCsv">↓ Excel / CSV</button><button id="exportJson" class="primary">↓ Sauvegarde JSON</button><button id="importButton">↑ Restaurer</button><input id="importFile" type="file" accept=".json,.csv,.txt" hidden/></div>
 </header>
 <div class="newbar" id="mobile-info"><div class="intro"><b>📱 Mobile + ordinateur</b><br><span class="hint">Même inventaire V3 compatible. Pour partager automatiquement tes données entre appareils, configure la synchronisation cloud ci-dessous.</span></div><button id="openCloud" type="button">☁ Synchronisation</button><button id="openPrice" type="button">€ Tarifs Cardmarket</button></div>
@@ -113,6 +158,20 @@ footer{margin:28px 3px 0;color:#7f96af;font-size:12px;line-height:1.6}footer a{c
  <div class="metric"><span>Manquantes</span><strong id="nMissing">—</strong><small>références</small></div>
  <div class="metric accent"><span>Complétion de collection</span><strong id="nPercent">—</strong><div class="progressline"><i id="progress"></i></div></div>
 </section>
+<nav class="v6-tabs" aria-label="Sections de la collection">
+ <button type="button" data-v6-tab="catalogue" class="active">☷ Catalogue</button>
+ <button type="button" data-v6-tab="binder">▦ Mon classeur</button>
+ <button type="button" data-v6-tab="wishlist">☆ Liste d'achats</button>
+ <button type="button" data-v6-tab="market">€ Valeur & cours</button>
+ <button type="button" data-v6-tab="history">◷ Historique & sauvegardes</button>
+</nav>
+<section class="v6-summary" aria-label="Résumé collection V6">
+ <div class="v6-stat"><span>Valeur des cartes cotées</span><strong id="v6Value">—</strong><small id="v6ValueNote">Hors cartes sans prix exact</small></div>
+ <div class="v6-stat"><span>Références cotées / possédées</span><strong id="v6Priced">—</strong><small>Ne comprend pas les prix indicatifs</small></div>
+ <div class="v6-stat"><span>Wishlist / budget</span><strong id="v6Wish">—</strong><small id="v6WishNote">Budget libre</small></div>
+ <div class="v6-stat"><span>Alertes sur les prix</span><strong id="v6Alerts">—</strong><small>Comparaisons entre relevés enregistrés</small></div>
+</section>
+
 <div class="layout">
  <aside class="side"><h2>Progression par extension</h2><div class="section-label">Filtrer par série</div><div id="setList" class="setlist"></div></aside>
  <section class="workspace" aria-label="Liste des cartes"><div class="worktop"><div class="worktitle"><div><h2 id="listingTitle">Toutes les cartes</h2><div id="listingSub" class="hint">Coche la case d’une carte pour l’ajouter à ta collection.</div></div><button id="resetFilter" class="small ghost">Effacer filtres</button></div>
@@ -122,6 +181,46 @@ footer{margin:28px 3px 0;color:#7f96af;font-size:12px;line-height:1.6}footer a{c
  <div id="pagination" class="pagination" hidden><span id="pageInfo" class="hint"></span><div class="paging"><button id="prevPage" class="small">← Précédent</button><span id="pageCounter" class="hint"></span><button id="nextPage" class="small">Suivant →</button></div></div>
  </section>
 </div>
+<section id="v6PanelBinder" class="v6-panel" hidden>
+ <h2>Mon classeur visuel</h2><p class="v6-description">Parcours tes cartes sur des pages de 9 emplacements, par extension, couleur, rareté ou possession. Les photos et quantités viennent de ta collection actuelle ; ouvre une carte pour noter son rangement.</p>
+ <div class="v6-toolbar">
+  <label>Extension<select id="v6BinderSet"><option value="all">Toutes les extensions</option></select></label>
+  <label>Couleur<select id="v6BinderColor"><option value="all">Toutes les couleurs</option><option value="Red">Rouge</option><option value="Green">Vert</option><option value="Blue">Bleu</option><option value="Purple">Violet</option><option value="Black">Noir</option><option value="Yellow">Jaune</option><option value="multi">Bicolores</option></select></label>
+  <label>Rareté<select id="v6BinderRarity"><option value="all">Toutes les raretés</option></select></label>
+  <label>Afficher<select id="v6BinderStatus"><option value="all">Toutes</option><option value="owned">Possédées</option><option value="missing">Manquantes</option><option value="wished">Wishlist</option></select></label>
+  <label>Tri<select id="v6BinderSort"><option value="number">Numéro</option><option value="rarity">Rareté</option><option value="name">Nom</option><option value="location">Rangement</option></select></label>
+  <label>Rechercher<input id="v6BinderSearch" type="search" placeholder="Nom ou numéro"></label>
+ </div>
+ <div id="v6BinderCards" class="v6-binder"></div>
+ <div class="v6-binder-footer"><span id="v6BinderInfo" class="hint"></span><div class="paging"><button id="v6BinderPrev" type="button">← Page précédente</button><span id="v6BinderPage" class="hint"></span><button id="v6BinderNext" type="button">Page suivante →</button></div></div>
+</section>
+<section id="v6PanelWishlist" class="v6-panel" hidden>
+ <h2>Ma liste d'achats</h2><p class="v6-description">Ajoute les cartes recherchées depuis leur fiche. Priorise tes achats, fixe un objectif de prix et garde la distinction entre prix exact et estimation indicative.</p>
+ <div class="v6-toolbar">
+ <label>Budget d'achats (€)<input id="v6Budget" type="number" min="0" step="0.01" placeholder="Ex. 150"></label>
+ <label>Afficher<select id="v6WishScope"><option value="missing">À acheter</option><option value="all">Toute la wishlist</option><option value="owned">Déjà possédées</option></select></label>
+ <label>Priorité<select id="v6WishPriorityFilter"><option value="all">Toutes</option><option value="1">Urgente</option><option value="2">Importante</option><option value="3">Plus tard</option></select></label>
+ <label>Rechercher<input id="v6WishSearch" type="search" placeholder="Nom / numéro"></label>
+ <button type="button" id="v6WishDiscover">+ Explorer les manquantes</button>
+ </div>
+ <div id="v6WishSummary" class="v6-notice"></div><div id="v6WishlistList" class="v6-list"></div>
+</section>
+<section id="v6PanelMarket" class="v6-panel" hidden>
+ <h2>Valeur de collection & évolution des prix</h2><p class="v6-description">Seuls les produits Cardmarket identifiés précisément sont inclus dans les totaux. Les variantes non associées ou sans cotation sont exclues : tu peux les associer dans la fiche de chaque carte.</p>
+ <div class="v6-split">
+  <div class="v6-cardbox"><h3>Valeur par extension</h3><div id="v6ValueBySet" class="v6-bars"></div><div id="v6MarketMissing" class="v6-help"></div></div>
+  <div class="v6-cardbox"><h3>Surveillance des prix</h3><div class="v6-toolbar"><label>Seuil d'alerte (%)<input type="number" min="1" max="90" step="1" value="15" id="v6AlertThreshold"></label><button id="v6PricesRefresh">↻ Actualiser les cours</button></div><p class="v6-help">Les relevés officiels sont publiés périodiquement. L'historique apparaît au fil des semaines ; les alertes s'affichent lorsque tu ouvres l'application, pas en notification push.</p><div id="v6RecentAlerts" class="v6-list"></div></div>
+ </div>
+ <div class="v6-cardbox" style="margin-top:14px"><h3>Historique d'un produit associé</h3><div class="v6-toolbar"><label>Carte suivie<select id="v6HistoryCard"><option value="">Choisir une carte avec prix exact</option></select></label><span id="v6HistoryMeta" class="hint"></span></div><svg id="v6PriceChart" class="v6-chart" role="img" aria-label="Évolution hebdomadaire des cours" viewBox="0 0 600 150"></svg><div id="v6PriceChartCaption" class="v6-help"></div></div>
+ <div class="v6-cardbox" style="margin-top:14px"><h3>Cartes les plus chères — cotation confirmée</h3><div id="v6TopCards" class="v6-list"></div></div>
+</section>
+<section id="v6PanelHistory" class="v6-panel" hidden>
+ <h2>Historique, restauration et synchronisation</h2><p class="v6-description">Ta collection reste compatible avec les sauvegardes V3, V4 et V5. Conserve des copies JSON en dehors du navigateur. Les points de restauration enregistrés sur cet appareil sont distincts de l'historique cloud Supabase.</p>
+ <div class="v6-toolbar"><button id="v6CreateSnapshot" class="primary">Créer un point de restauration</button><button id="v6DownloadBackup">↓ Télécharger ma sauvegarde JSON</button><button id="v6CloudOpen">☁ Configurer / consulter le cloud</button><button id="v6CloudHistoryRefresh">↻ Historique cloud</button></div>
+ <div class="v6-split"><div class="v6-cardbox"><h3>Points de restauration locaux (cet appareil)</h3><div id="v6SnapshotList" class="v6-list"></div></div><div class="v6-cardbox"><h3>Dernières modifications</h3><div id="v6Activity" class="v6-timeline"></div></div></div>
+ <div class="v6-cardbox" style="margin-top:14px"><h3>Versions sauvegardées dans Supabase</h3><p class="v6-help">Disponible après exécution du fichier <code>schema_supabase_v6.sql</code> dans ton projet Supabase et connexion au même compte sur PC et iPhone. Si tu n'actives pas cette étape, la sauvegarde JSON reste utilisable.</p><div id="v6HistoryCloud" class="v6-list">Non chargé.</div></div>
+</section>
+
 <details class="priceSettings" id="priceSettings"><summary>💶 Prix Cardmarket — prix indicatifs et versions exactes</summary>
 <p>Deux fichiers officiels publics permettent de mettre les cours en correspondance avec les cartes, mais plusieurs impressions partagent un même code. Pour un prix fiable, choisis le produit Cardmarket exact dans la fiche de ta carte. Quand plusieurs produits correspondent à une référence, un prix minimum indicatif est affiché, sans être compté dans la valeur de collection. Mise à jour tentée au démarrage si le dernier relevé date de 7 jours ou plus ; en mode fichier local, le navigateur peut bloquer les téléchargements directs.</p>
 <div class="toolrow"><button id="refreshPrices">↻ Vérifier les prix maintenant</button><span class="statusline" id="priceStatus">Aucune cote chargée</span></div>
@@ -139,7 +238,22 @@ footer{margin:28px 3px 0;color:#7f96af;font-size:12px;line-height:1.6}footer a{c
 <footer><p><b>Enregistrement :</b> les cases cochées, les quantités et les notes sont sauvegardées localement dans ce navigateur. <b>Avant de changer de version ou de navigateur, exporte ta sauvegarde JSON puis restaure-la dans la nouvelle version.</b> Sur Chrome et Edge, le bouton « Activer la sauvegarde sur disque » permet aussi de synchroniser automatiquement un fichier JSON choisi pendant la session : rouvre ce fichier lors des prochaines sessions. Conserve une copie JSON datée sur un autre support. Les visuels s’affichent directement dans le tableau, mais leur chargement nécessite Internet ; ils ne sont pas stockés dans ce fichier HTML.</p><p><b>Catalogue :</b> données provenant du dépôt <a href="https://github.com/buhbbl/punk-records" target="_blank" rel="noopener">Punk Records</a> (données reprises des listes Bandai). Les index anglais et français sont fusionnés pour éviter la disparition des cartes classiques anciennes : si une source ne répond pas, les numéros de référence restent disponibles, mais les métadonnées non vérifiées sont signalées. Les versions <code>_p1, _p2…</code> et <code>_r1…</code> sont suivies séparément. Elles sont regroupées sous le numéro d’origine, même lorsqu’elles ont été distribuées dans une autre extension. Données de la collection OP-18 : fichier de booster 569118 (Punk Records), y compris rééditions avec numéros OP13, OP17, ST24 et ST34. Images © Eiichiro Oda / Shueisha / Toei Animation / Bandai. Cet outil personnel n’est pas affilié à Bandai.</p></footer>
 </main>
 <nav class="mobileDock" aria-label="Navigation rapide"><button id="dockSearch"><span>⌕</span>Cartes</button><button id="dockMissing"><span>▢</span>Manquantes</button><button id="dockPrices"><span>€</span>Prix</button><button id="dockBackup"><span>⭳</span>Sauvegarder</button></nav>
-<div id="modal" class="modal" aria-hidden="true"><div class="modal-panel" role="dialog" aria-modal="true" aria-label="Détails de la carte"><div class="modalhead"><div><div class="eyebrow" id="modalSet"></div><h2 style="margin:4px 0 0" id="modalTitle"></h2></div><button id="modalClose" class="iconbtn" title="Fermer">✕</button></div><div class="modal-main"><div class="art" id="modalArt"></div><div><p id="modalMeta" class="muted"></p><div id="modalColor" class="colorpills"></div><div id="modalStats" class="detailsgrid"></div><div id="modalText" class="detailsblock"></div><div id="modalDetailsStatus" class="hint">Détails de la carte…</div><div class="modalSectionTitle">Prix de la carte (Cardmarket)</div><div id="modalPrice">—</div><div class="hint" id="modalPriceHint">Pas de prix associé pour cette impression.</div><label for="modalCmProduct">Associer la bonne impression Cardmarket</label><select id="modalCmProduct"><option value="">Choisir après chargement des prix</option></select><a id="modalCardmarketSearch" target="_blank" rel="noopener" style="color:var(--blue);font-size:12px;display:block;margin:7px 0">Rechercher cette carte sur Cardmarket ↗</a><label for="modalNotes">Notes personnelles</label><textarea id="modalNotes" placeholder="État, rangement, échange, vendeur…"></textarea><p class="hint" style="margin-top:8px">Les notes sont enregistrées automatiquement.</p><div class="v5-photo-actions"><button type="button" id="photoLocalV5">📷 Ajouter ma photo</button><button type="button" id="photoForgetV5">Retirer la photo personnelle</button><input type="file" id="photoFileV5" accept="image/png,image/jpeg,image/webp,image/avif" hidden><label for="photoUrlV5">Ou coller une URL d'image exacte (PC et iPhone si cloud activé)</label><input type="url" id="photoUrlV5" placeholder="https://…/image.webp"><button id="photoUrlSaveV5" type="button">Enregistrer ce lien</button><p class="v5-photo-tip">Les photos sélectionnées sur cet appareil sont conservées dans son navigateur. Une URL enregistrée est incluse dans la sauvegarde JSON et peut se synchroniser via ton compte cloud.</p></div><div style="margin-top:20px"><a id="modalPhotoLink" target="_blank" rel="noopener" style="color:var(--blue)">Ouvrir la photo de la carte ↗</a></div></div></div></div></div>
+<div id="modal" class="modal" aria-hidden="true"><div class="modal-panel" role="dialog" aria-modal="true" aria-label="Détails de la carte"><div class="modalhead"><div><div class="eyebrow" id="modalSet"></div><h2 style="margin:4px 0 0" id="modalTitle"></h2></div><button id="modalClose" class="iconbtn" title="Fermer">✕</button></div><div class="modal-main"><div class="art" id="modalArt"></div><div><p id="modalMeta" class="muted"></p><div id="modalColor" class="colorpills"></div><div id="modalStats" class="detailsgrid"></div><div id="modalText" class="detailsblock"></div><div id="modalDetailsStatus" class="hint">Détails de la carte…</div><div class="modalSectionTitle">Prix de la carte (Cardmarket)</div><div id="modalPrice">—</div><div class="hint" id="modalPriceHint">Pas de prix associé pour cette impression.</div><label for="modalCmProduct">Associer la bonne impression Cardmarket</label><select id="modalCmProduct"><option value="">Choisir après chargement des prix</option></select><a id="modalCardmarketSearch" target="_blank" rel="noopener" style="color:var(--blue);font-size:12px;display:block;margin:7px 0">Rechercher cette carte sur Cardmarket ↗</a><label for="modalNotes">Notes personnelles</label><textarea id="modalNotes" placeholder="État, rangement, échange, vendeur…"></textarea><p class="hint" style="margin-top:8px">Les notes sont enregistrées automatiquement.</p><div class="v5-photo-actions"><button type="button" id="photoLocalV5">📷 Ajouter ma photo</button><button type="button" id="photoForgetV5">Retirer la photo personnelle</button><input type="file" id="photoFileV5" accept="image/png,image/jpeg,image/webp,image/avif" hidden><label for="photoUrlV5">Ou coller une URL d'image exacte (PC et iPhone si cloud activé)</label><input type="url" id="photoUrlV5" placeholder="https://…/image.webp"><button id="photoUrlSaveV5" type="button">Enregistrer ce lien</button><p class="v5-photo-tip">Les photos sélectionnées sur cet appareil sont conservées dans son navigateur. Une URL enregistrée est incluse dans la sauvegarde JSON et peut se synchroniser via ton compte cloud.</p></div><div style="margin-top:20px"><a id="modalPhotoLink" target="_blank" rel="noopener" style="color:var(--blue)">Ouvrir la photo de la carte ↗</a></div><div class="v6-mform" id="v6ModalForm">
+ <div class="modalSectionTitle">☆ Wishlist et localisation de cette carte</div>
+ <div class="v6-field-row" style="margin:9px 0 12px"><label class="v6-field" style="display:flex;align-items:center;gap:8px;flex-direction:row"><input type="checkbox" id="v6ModalWish"> Ajouter à ma wishlist</label></div>
+ <div class="v6-mgrid">
+  <label class="v6-field">Priorité d'achat<select id="v6ModalPriority"><option value="1">Urgente</option><option value="2" selected>Importante</option><option value="3">Plus tard</option></select></label>
+  <label class="v6-field">Exemplaires recherchés<input id="v6ModalWishQty" type="number" min="1" max="9999" step="1" value="1"></label>
+  <label class="v6-field">Mon prix cible (€)<input id="v6ModalTarget" type="number" min="0" step="0.01" placeholder="Prix maximum souhaité"></label>
+  <label class="v6-field">Classeur (nom / numéro)<input id="v6ModalBinder" type="text" maxlength="70" placeholder="Ex. Classeur A"></label>
+  <label class="v6-field">Page du classeur<input id="v6ModalPage" type="number" min="1" max="9999" placeholder="Ex. 12"></label>
+  <label class="v6-field">Emplacement sur la page<input id="v6ModalSlot" type="number" min="1" max="99" placeholder="Ex. 4"></label>
+  <label class="v6-field">Boîte / rangement<input id="v6ModalBox" type="text" maxlength="70" placeholder="Ex. Boîte des doubles"></label>
+ </div>
+ <p id="v6ModalPriceInfo" class="v6-help"></p>
+ <button id="v6SaveModal" type="button" class="primary" style="margin-top:12px">Enregistrer wishlist et rangement</button>
+</div>
+</div></div></div></div>
 <script>
 "use strict";
 const FALLBACK_IDS=["OP01-001","OP01-002","OP01-003","OP01-004","OP01-005","OP01-006","OP01-007","OP01-008","OP01-009","OP01-010","OP01-011","OP01-012","OP01-013","OP01-014","OP01-015","OP01-016","OP01-017","OP01-018","OP01-019","OP01-020","OP01-021","OP01-022","OP01-023","OP01-024","OP01-025","OP01-026","OP01-027","OP01-028","OP01-029","OP01-030","OP01-031","OP01-032","OP01-033","OP01-034","OP01-035","OP01-036","OP01-037","OP01-038","OP01-039","OP01-040","OP01-041","OP01-042","OP01-043","OP01-044","OP01-045","OP01-046","OP01-047","OP01-048","OP01-049","OP01-050","OP01-051","OP01-052","OP01-053","OP01-054","OP01-055","OP01-056","OP01-057","OP01-058","OP01-059","OP01-060","OP01-061","OP01-062","OP01-063","OP01-064","OP01-065","OP01-066","OP01-067","OP01-068","OP01-069","OP01-070","OP01-071","OP01-072","OP01-073","OP01-074","OP01-075","OP01-076","OP01-077","OP01-078","OP01-079","OP01-080","OP01-081","OP01-082","OP01-083","OP01-084","OP01-085","OP01-086","OP01-087","OP01-088","OP01-089","OP01-090","OP01-091","OP01-092","OP01-093","OP01-094","OP01-095","OP01-096","OP01-097","OP01-098","OP01-099","OP01-100","OP01-101","OP01-102","OP01-103","OP01-104","OP01-105","OP01-106","OP01-107","OP01-108","OP01-109","OP01-110","OP01-111","OP01-112","OP01-113","OP01-114","OP01-115","OP01-116","OP01-117","OP01-118","OP01-119","OP01-120","OP01-121","OP02-001","OP02-002","OP02-003","OP02-004","OP02-005","OP02-006","OP02-007","OP02-008","OP02-009","OP02-010","OP02-011","OP02-012","OP02-013","OP02-014","OP02-015","OP02-016","OP02-017","OP02-018","OP02-019","OP02-020","OP02-021","OP02-022","OP02-023","OP02-024","OP02-025","OP02-026","OP02-027","OP02-028","OP02-029","OP02-030","OP02-031","OP02-032","OP02-033","OP02-034","OP02-035","OP02-036","OP02-037","OP02-038","OP02-039","OP02-040","OP02-041","OP02-042","OP02-043","OP02-044","OP02-045","OP02-046","OP02-047","OP02-048","OP02-049","OP02-050","OP02-051","OP02-052","OP02-053","OP02-054","OP02-055","OP02-056","OP02-057","OP02-058","OP02-059","OP02-060","OP02-061","OP02-062","OP02-063","OP02-064","OP02-065","OP02-066","OP02-067","OP02-068","OP02-069","OP02-070","OP02-071","OP02-072","OP02-073","OP02-074","OP02-075","OP02-076","OP02-077","OP02-078","OP02-079","OP02-080","OP02-081","OP02-082","OP02-083","OP02-084","OP02-085","OP02-086","OP02-087","OP02-088","OP02-089","OP02-090","OP02-091","OP02-092","OP02-093","OP02-094","OP02-095","OP02-096","OP02-097","OP02-098","OP02-099","OP02-100","OP02-101","OP02-102","OP02-103","OP02-104","OP02-105","OP02-106","OP02-107","OP02-108","OP02-109","OP02-110","OP02-111","OP02-112","OP02-113","OP02-114","OP02-115","OP02-116","OP02-117","OP02-118","OP02-119","OP02-120","OP02-121","OP03-001","OP03-002","OP03-003","OP03-004","OP03-005","OP03-006","OP03-007","OP03-008","OP03-009","OP03-010","OP03-011","OP03-012","OP03-013","OP03-014","OP03-015","OP03-016","OP03-017","OP03-018","OP03-019","OP03-020","OP03-021","OP03-022","OP03-023","OP03-024","OP03-025","OP03-026","OP03-027","OP03-028","OP03-029","OP03-030","OP03-031","OP03-032","OP03-033","OP03-034","OP03-035","OP03-036","OP03-037","OP03-038","OP03-039","OP03-040","OP03-041","OP03-042","OP03-043","OP03-044","OP03-045","OP03-046","OP03-047","OP03-048","OP03-049","OP03-050","OP03-051","OP03-052","OP03-053","OP03-054","OP03-055","OP03-056","OP03-057","OP03-058","OP03-059","OP03-060","OP03-061","OP03-062","OP03-063","OP03-064","OP03-065","OP03-066","OP03-067","OP03-068","OP03-069","OP03-070","OP03-071","OP03-072","OP03-073","OP03-074","OP03-075","OP03-076","OP03-077","OP03-078","OP03-079","OP03-080","OP03-081","OP03-082","OP03-083","OP03-084","OP03-085","OP03-086","OP03-087","OP03-088","OP03-089","OP03-090","OP03-091","OP03-092","OP03-093","OP03-094","OP03-095","OP03-096","OP03-097","OP03-098","OP03-099","OP03-100","OP03-101","OP03-102","OP03-103","OP03-104","OP03-105","OP03-106","OP03-107","OP03-108","OP03-109","OP03-110","OP03-111","OP03-112","OP03-113","OP03-114","OP03-115","OP03-116","OP03-117","OP03-118","OP03-119","OP03-120","OP03-121","OP03-122","OP03-123","OP04-001","OP04-002","OP04-003","OP04-004","OP04-005","OP04-006","OP04-007","OP04-008","OP04-009","OP04-010","OP04-011","OP04-012","OP04-013","OP04-014","OP04-015","OP04-016","OP04-017","OP04-018","OP04-019","OP04-020","OP04-021","OP04-022","OP04-023","OP04-024","OP04-025","OP04-026","OP04-027","OP04-028","OP04-029","OP04-030","OP04-031","OP04-032","OP04-033","OP04-034","OP04-035","OP04-036","OP04-037","OP04-038","OP04-039","OP04-040","OP04-041","OP04-042","OP04-043","OP04-044","OP04-045","OP04-046","OP04-047","OP04-048","OP04-049","OP04-050","OP04-051","OP04-052","OP04-053","OP04-054","OP04-055","OP04-056","OP04-057","OP04-058","OP04-059","OP04-060","OP04-061","OP04-062","OP04-063","OP04-064","OP04-065","OP04-066","OP04-067","OP04-068","OP04-069","OP04-070","OP04-071","OP04-072","OP04-073","OP04-074","OP04-075","OP04-076","OP04-077","OP04-078","OP04-079","OP04-080","OP04-081","OP04-082","OP04-083","OP04-084","OP04-085","OP04-086","OP04-087","OP04-088","OP04-089","OP04-090","OP04-091","OP04-092","OP04-093","OP04-094","OP04-095","OP04-096","OP04-097","OP04-098","OP04-099","OP04-100","OP04-101","OP04-102","OP04-103","OP04-104","OP04-105","OP04-106","OP04-107","OP04-108","OP04-109","OP04-110","OP04-111","OP04-112","OP04-113","OP04-114","OP04-115","OP04-116","OP04-117","OP04-118","OP04-119","OP05-001","OP05-002","OP05-003","OP05-004","OP05-005","OP05-006","OP05-007","OP05-008","OP05-009","OP05-010","OP05-011","OP05-012","OP05-013","OP05-014","OP05-015","OP05-016","OP05-017","OP05-018","OP05-019","OP05-020","OP05-021","OP05-022","OP05-023","OP05-024","OP05-025","OP05-026","OP05-027","OP05-028","OP05-029","OP05-030","OP05-031","OP05-032","OP05-033","OP05-034","OP05-035","OP05-036","OP05-037","OP05-038","OP05-039","OP05-040","OP05-041","OP05-042","OP05-043","OP05-044","OP05-045","OP05-046","OP05-047","OP05-048","OP05-049","OP05-050","OP05-051","OP05-052","OP05-053","OP05-054","OP05-055","OP05-056","OP05-057","OP05-058","OP05-059","OP05-060","OP05-061","OP05-062","OP05-063","OP05-064","OP05-065","OP05-066","OP05-067","OP05-068","OP05-069","OP05-070","OP05-071","OP05-072","OP05-073","OP05-074","OP05-075","OP05-076","OP05-077","OP05-078","OP05-079","OP05-080","OP05-081","OP05-082","OP05-083","OP05-084","OP05-085","OP05-086","OP05-087","OP05-088","OP05-089","OP05-090","OP05-091","OP05-092","OP05-093","OP05-094","OP05-095","OP05-096","OP05-097","OP05-098","OP05-099","OP05-100","OP05-101","OP05-102","OP05-103","OP05-104","OP05-105","OP05-106","OP05-107","OP05-108","OP05-109","OP05-110","OP05-111","OP05-112","OP05-113","OP05-114","OP05-115","OP05-116","OP05-117","OP05-118","OP05-119","OP06-001","OP06-002","OP06-003","OP06-004","OP06-005","OP06-006","OP06-007","OP06-008","OP06-009","OP06-010","OP06-011","OP06-012","OP06-013","OP06-014","OP06-015","OP06-016","OP06-017","OP06-018","OP06-019","OP06-020","OP06-021","OP06-022","OP06-023","OP06-024","OP06-025","OP06-026","OP06-027","OP06-028","OP06-029","OP06-030","OP06-031","OP06-032","OP06-033","OP06-034","OP06-035","OP06-036","OP06-037","OP06-038","OP06-039","OP06-040","OP06-041","OP06-042","OP06-043","OP06-044","OP06-045","OP06-046","OP06-047","OP06-048","OP06-049","OP06-050","OP06-051","OP06-052","OP06-053","OP06-054","OP06-055","OP06-056","OP06-057","OP06-058","OP06-059","OP06-060","OP06-061","OP06-062","OP06-063","OP06-064","OP06-065","OP06-066","OP06-067","OP06-068","OP06-069","OP06-070","OP06-071","OP06-072","OP06-073","OP06-074","OP06-075","OP06-076","OP06-077","OP06-078","OP06-079","OP06-080","OP06-081","OP06-082","OP06-083","OP06-084","OP06-085","OP06-086","OP06-087","OP06-088","OP06-089","OP06-090","OP06-091","OP06-092","OP06-093","OP06-094","OP06-095","OP06-096","OP06-097","OP06-098","OP06-099","OP06-100","OP06-101","OP06-102","OP06-103","OP06-104","OP06-105","OP06-106","OP06-107","OP06-108","OP06-109","OP06-110","OP06-111","OP06-112","OP06-113","OP06-114","OP06-115","OP06-116","OP06-117","OP06-118","OP06-119","OP07-001","OP07-002","OP07-003","OP07-004","OP07-005","OP07-006","OP07-007","OP07-008","OP07-009","OP07-010","OP07-011","OP07-012","OP07-013","OP07-014","OP07-015","OP07-016","OP07-017","OP07-018","OP07-019","OP07-020","OP07-021","OP07-022","OP07-023","OP07-024","OP07-025","OP07-026","OP07-027","OP07-028","OP07-029","OP07-030","OP07-031","OP07-032","OP07-033","OP07-034","OP07-035","OP07-036","OP07-037","OP07-038","OP07-039","OP07-040","OP07-041","OP07-042","OP07-043","OP07-044","OP07-045","OP07-046","OP07-047","OP07-048","OP07-049","OP07-050","OP07-051","OP07-052","OP07-053","OP07-054","OP07-055","OP07-056","OP07-057","OP07-058","OP07-059","OP07-060","OP07-061","OP07-062","OP07-063","OP07-064","OP07-065","OP07-066","OP07-067","OP07-068","OP07-069","OP07-070","OP07-071","OP07-072","OP07-073","OP07-074","OP07-075","OP07-076","OP07-077","OP07-078","OP07-079","OP07-080","OP07-081","OP07-082","OP07-083","OP07-084","OP07-085","OP07-086","OP07-087","OP07-088","OP07-089","OP07-090","OP07-091","OP07-092","OP07-093","OP07-094","OP07-095","OP07-096","OP07-097","OP07-098","OP07-099","OP07-100","OP07-101","OP07-102","OP07-103","OP07-104","OP07-105","OP07-106","OP07-107","OP07-108","OP07-109","OP07-110","OP07-111","OP07-112","OP07-113","OP07-114","OP07-115","OP07-116","OP07-117","OP07-118","OP07-119","OP08-001","OP08-002","OP08-003","OP08-004","OP08-005","OP08-006","OP08-007","OP08-008","OP08-009","OP08-010","OP08-011","OP08-012","OP08-013","OP08-014","OP08-015","OP08-016","OP08-017","OP08-018","OP08-019","OP08-020","OP08-021","OP08-022","OP08-023","OP08-024","OP08-025","OP08-026","OP08-027","OP08-028","OP08-029","OP08-030","OP08-031","OP08-032","OP08-033","OP08-034","OP08-035","OP08-036","OP08-037","OP08-038","OP08-039","OP08-040","OP08-041","OP08-042","OP08-043","OP08-044","OP08-045","OP08-046","OP08-047","OP08-048","OP08-049","OP08-050","OP08-051","OP08-052","OP08-053","OP08-054","OP08-055","OP08-056","OP08-057","OP08-058","OP08-059","OP08-060","OP08-061","OP08-062","OP08-063","OP08-064","OP08-065","OP08-066","OP08-067","OP08-068","OP08-069","OP08-070","OP08-071","OP08-072","OP08-073","OP08-074","OP08-075","OP08-076","OP08-077","OP08-078","OP08-079","OP08-080","OP08-081","OP08-082","OP08-083","OP08-084","OP08-085","OP08-086","OP08-087","OP08-088","OP08-089","OP08-090","OP08-091","OP08-092","OP08-093","OP08-094","OP08-095","OP08-096","OP08-097","OP08-098","OP08-099","OP08-100","OP08-101","OP08-102","OP08-103","OP08-104","OP08-105","OP08-106","OP08-107","OP08-108","OP08-109","OP08-110","OP08-111","OP08-112","OP08-113","OP08-114","OP08-115","OP08-116","OP08-117","OP08-118","OP08-119","OP09-001","OP09-002","OP09-003","OP09-004","OP09-005","OP09-006","OP09-007","OP09-008","OP09-009","OP09-010","OP09-011","OP09-012","OP09-013","OP09-014","OP09-015","OP09-016","OP09-017","OP09-018","OP09-019","OP09-020","OP09-021","OP09-022","OP09-023","OP09-024","OP09-025","OP09-026","OP09-027","OP09-028","OP09-029","OP09-030","OP09-031","OP09-032","OP09-033","OP09-034","OP09-035","OP09-036","OP09-037","OP09-038","OP09-039","OP09-040","OP09-041","OP09-042","OP09-043","OP09-044","OP09-045","OP09-046","OP09-047","OP09-048","OP09-049","OP09-050","OP09-051","OP09-052","OP09-053","OP09-054","OP09-055","OP09-056","OP09-057","OP09-058","OP09-059","OP09-060","OP09-061","OP09-062","OP09-063","OP09-064","OP09-065","OP09-066","OP09-067","OP09-068","OP09-069","OP09-070","OP09-071","OP09-072","OP09-073","OP09-074","OP09-075","OP09-076","OP09-077","OP09-078","OP09-079","OP09-080","OP09-081","OP09-082","OP09-083","OP09-084","OP09-085","OP09-086","OP09-087","OP09-088","OP09-089","OP09-090","OP09-091","OP09-092","OP09-093","OP09-094","OP09-095","OP09-096","OP09-097","OP09-098","OP09-099","OP09-100","OP09-101","OP09-102","OP09-103","OP09-104","OP09-105","OP09-106","OP09-107","OP09-108","OP09-109","OP09-110","OP09-111","OP09-112","OP09-113","OP09-114","OP09-115","OP09-116","OP09-117","OP09-118","OP09-119","OP10-001","OP10-002","OP10-003","OP10-004","OP10-005","OP10-006","OP10-007","OP10-008","OP10-009","OP10-010","OP10-011","OP10-012","OP10-013","OP10-014","OP10-015","OP10-016","OP10-017","OP10-018","OP10-019","OP10-020","OP10-021","OP10-022","OP10-023","OP10-024","OP10-025","OP10-026","OP10-027","OP10-028","OP10-029","OP10-030","OP10-031","OP10-032","OP10-033","OP10-034","OP10-035","OP10-036","OP10-037","OP10-038","OP10-039","OP10-040","OP10-041","OP10-042","OP10-043","OP10-044","OP10-045","OP10-046","OP10-047","OP10-048","OP10-049","OP10-050","OP10-051","OP10-052","OP10-053","OP10-054","OP10-055","OP10-056","OP10-057","OP10-058","OP10-059","OP10-060","OP10-061","OP10-062","OP10-063","OP10-064","OP10-065","OP10-066","OP10-067","OP10-068","OP10-069","OP10-070","OP10-071","OP10-072","OP10-073","OP10-074","OP10-075","OP10-076","OP10-077","OP10-078","OP10-079","OP10-080","OP10-081","OP10-082","OP10-083","OP10-084","OP10-085","OP10-086","OP10-087","OP10-088","OP10-089","OP10-090","OP10-091","OP10-092","OP10-093","OP10-094","OP10-095","OP10-096","OP10-097","OP10-098","OP10-099","OP10-100","OP10-101","OP10-102","OP10-103","OP10-104","OP10-105","OP10-106","OP10-107","OP10-108","OP10-109","OP10-110","OP10-111","OP10-112","OP10-113","OP10-114","OP10-115","OP10-116","OP10-117","OP10-118","OP10-119","OP11-001","OP11-002","OP11-003","OP11-004","OP11-005","OP11-006","OP11-007","OP11-008","OP11-009","OP11-010","OP11-011","OP11-012","OP11-013","OP11-014","OP11-015","OP11-016","OP11-017","OP11-018","OP11-019","OP11-020","OP11-021","OP11-022","OP11-023","OP11-024","OP11-025","OP11-026","OP11-027","OP11-028","OP11-029","OP11-030","OP11-031","OP11-032","OP11-033","OP11-034","OP11-035","OP11-036","OP11-037","OP11-038","OP11-039","OP11-040","OP11-041","OP11-042","OP11-043","OP11-044","OP11-045","OP11-046","OP11-047","OP11-048","OP11-049","OP11-050","OP11-051","OP11-052","OP11-053","OP11-054","OP11-055","OP11-056","OP11-057","OP11-058","OP11-059","OP11-060","OP11-061","OP11-062","OP11-063","OP11-064","OP11-065","OP11-066","OP11-067","OP11-068","OP11-069","OP11-070","OP11-071","OP11-072","OP11-073","OP11-074","OP11-075","OP11-076","OP11-077","OP11-078","OP11-079","OP11-080","OP11-081","OP11-082","OP11-083","OP11-084","OP11-085","OP11-086","OP11-087","OP11-088","OP11-089","OP11-090","OP11-091","OP11-092","OP11-093","OP11-094","OP11-095","OP11-096","OP11-097","OP11-098","OP11-099","OP11-100","OP11-101","OP11-102","OP11-103","OP11-104","OP11-105","OP11-106","OP11-107","OP11-108","OP11-109","OP11-110","OP11-111","OP11-112","OP11-113","OP11-114","OP11-115","OP11-116","OP11-117","OP11-118","OP11-119","OP12-001","OP12-002","OP12-003","OP12-004","OP12-005","OP12-006","OP12-007","OP12-008","OP12-009","OP12-010","OP12-011","OP12-012","OP12-013","OP12-014","OP12-015","OP12-016","OP12-017","OP12-018","OP12-019","OP12-020","OP12-021","OP12-022","OP12-023","OP12-024","OP12-025","OP12-026","OP12-027","OP12-028","OP12-029","OP12-030","OP12-031","OP12-032","OP12-033","OP12-034","OP12-035","OP12-036","OP12-037","OP12-038","OP12-039","OP12-040","OP12-041","OP12-042","OP12-043","OP12-044","OP12-045","OP12-046","OP12-047","OP12-048","OP12-049","OP12-050","OP12-051","OP12-052","OP12-053","OP12-054","OP12-055","OP12-056","OP12-057","OP12-058","OP12-059","OP12-060","OP12-061","OP12-062","OP12-063","OP12-064","OP12-065","OP12-066","OP12-067","OP12-068","OP12-069","OP12-070","OP12-071","OP12-072","OP12-073","OP12-074","OP12-075","OP12-076","OP12-077","OP12-078","OP12-079","OP12-080","OP12-081","OP12-082","OP12-083","OP12-084","OP12-085","OP12-086","OP12-087","OP12-088","OP12-089","OP12-090","OP12-091","OP12-092","OP12-093","OP12-094","OP12-095","OP12-096","OP12-097","OP12-098","OP12-099","OP12-100","OP12-101","OP12-102","OP12-103","OP12-104","OP12-105","OP12-106","OP12-107","OP12-108","OP12-109","OP12-110","OP12-111","OP12-112","OP12-113","OP12-114","OP12-115","OP12-116","OP12-117","OP12-118","OP12-119","OP13-001","OP13-002","OP13-003","OP13-004","OP13-005","OP13-006","OP13-007","OP13-008","OP13-009","OP13-010","OP13-011","OP13-012","OP13-013","OP13-014","OP13-015","OP13-016","OP13-017","OP13-018","OP13-019","OP13-020","OP13-021","OP13-022","OP13-023","OP13-024","OP13-025","OP13-026","OP13-027","OP13-028","OP13-029","OP13-030","OP13-031","OP13-032","OP13-033","OP13-034","OP13-035","OP13-036","OP13-037","OP13-038","OP13-039","OP13-040","OP13-041","OP13-042","OP13-043","OP13-044","OP13-045","OP13-046","OP13-047","OP13-048","OP13-049","OP13-050","OP13-051","OP13-052","OP13-053","OP13-054","OP13-055","OP13-056","OP13-057","OP13-058","OP13-059","OP13-060","OP13-061","OP13-062","OP13-063","OP13-064","OP13-065","OP13-066","OP13-067","OP13-068","OP13-069","OP13-070","OP13-071","OP13-072","OP13-073","OP13-074","OP13-075","OP13-076","OP13-077","OP13-078","OP13-079","OP13-080","OP13-081","OP13-082","OP13-083","OP13-084","OP13-085","OP13-086","OP13-087","OP13-088","OP13-089","OP13-090","OP13-091","OP13-092","OP13-093","OP13-094","OP13-095","OP13-096","OP13-097","OP13-098","OP13-099","OP13-100","OP13-101","OP13-102","OP13-103","OP13-104","OP13-105","OP13-106","OP13-107","OP13-108","OP13-109","OP13-110","OP13-111","OP13-112","OP13-113","OP13-114","OP13-115","OP13-116","OP13-117","OP13-118","OP13-119","OP14-001","OP14-002","OP14-003","OP14-004","OP14-005","OP14-006","OP14-007","OP14-008","OP14-009","OP14-010","OP14-011","OP14-012","OP14-013","OP14-014","OP14-015","OP14-016","OP14-017","OP14-018","OP14-019","OP14-020","OP14-021","OP14-022","OP14-023","OP14-024","OP14-025","OP14-026","OP14-027","OP14-028","OP14-029","OP14-030","OP14-031","OP14-032","OP14-033","OP14-034","OP14-035","OP14-036","OP14-037","OP14-038","OP14-039","OP14-040","OP14-041","OP14-042","OP14-043","OP14-044","OP14-045","OP14-046","OP14-047","OP14-048","OP14-049","OP14-050","OP14-051","OP14-052","OP14-053","OP14-054","OP14-055","OP14-056","OP14-057","OP14-058","OP14-059","OP14-060","OP14-061","OP14-062","OP14-063","OP14-064","OP14-065","OP14-066","OP14-067","OP14-068","OP14-069","OP14-070","OP14-071","OP14-072","OP14-073","OP14-074","OP14-075","OP14-076","OP14-077","OP14-078","OP14-079","OP14-080","OP14-081","OP14-082","OP14-083","OP14-084","OP14-085","OP14-086","OP14-087","OP14-088","OP14-089","OP14-090","OP14-091","OP14-092","OP14-093","OP14-094","OP14-095","OP14-096","OP14-097","OP14-098","OP14-099","OP14-100","OP14-101","OP14-102","OP14-103","OP14-104","OP14-105","OP14-106","OP14-107","OP14-108","OP14-109","OP14-110","OP14-111","OP14-112","OP14-113","OP14-114","OP14-115","OP14-116","OP14-117","OP14-118","OP14-119","OP15-001","OP15-002","OP15-003","OP15-004","OP15-005","OP15-006","OP15-007","OP15-008","OP15-009","OP15-010","OP15-011","OP15-012","OP15-013","OP15-014","OP15-015","OP15-016","OP15-017","OP15-018","OP15-019","OP15-020","OP15-021","OP15-022","OP15-023","OP15-024","OP15-025","OP15-026","OP15-027","OP15-028","OP15-029","OP15-030","OP15-031","OP15-032","OP15-033","OP15-034","OP15-035","OP15-036","OP15-037","OP15-038","OP15-039","OP15-040","OP15-041","OP15-042","OP15-043","OP15-044","OP15-045","OP15-046","OP15-047","OP15-048","OP15-049","OP15-050","OP15-051","OP15-052","OP15-053","OP15-054","OP15-055","OP15-056","OP15-057","OP15-058","OP15-059","OP15-060","OP15-061","OP15-062","OP15-063","OP15-064","OP15-065","OP15-066","OP15-067","OP15-068","OP15-069","OP15-070","OP15-071","OP15-072","OP15-073","OP15-074","OP15-075","OP15-076","OP15-077","OP15-078","OP15-079","OP15-080","OP15-081","OP15-082","OP15-083","OP15-084","OP15-085","OP15-086","OP15-087","OP15-088","OP15-089","OP15-090","OP15-091","OP15-092","OP15-093","OP15-094","OP15-095","OP15-096","OP15-097","OP15-098","OP15-099","OP15-100","OP15-101","OP15-102","OP15-103","OP15-104","OP15-105","OP15-106","OP15-107","OP15-108","OP15-109","OP15-110","OP15-111","OP15-112","OP15-113","OP15-114","OP15-115","OP15-116","OP15-117","OP15-118","OP15-119","OP16-001","OP16-002","OP16-003","OP16-004","OP16-005","OP16-006","OP16-007","OP16-008","OP16-009","OP16-010","OP16-011","OP16-012","OP16-013","OP16-014","OP16-015","OP16-016","OP16-017","OP16-018","OP16-019","OP16-020","OP16-021","OP16-022","OP16-023","OP16-024","OP16-025","OP16-026","OP16-027","OP16-028","OP16-029","OP16-030","OP16-031","OP16-032","OP16-033","OP16-034","OP16-035","OP16-036","OP16-037","OP16-038","OP16-039","OP16-040","OP16-041","OP16-042","OP16-043","OP16-044","OP16-045","OP16-046","OP16-047","OP16-048","OP16-049","OP16-050","OP16-051","OP16-052","OP16-053","OP16-054","OP16-055","OP16-056","OP16-057","OP16-058","OP16-059","OP16-060","OP16-061","OP16-062","OP16-063","OP16-064","OP16-065","OP16-066","OP16-067","OP16-068","OP16-069","OP16-070","OP16-071","OP16-072","OP16-073","OP16-074","OP16-075","OP16-076","OP16-077","OP16-078","OP16-079","OP16-080","OP16-081","OP16-082","OP16-083","OP16-084","OP16-085","OP16-086","OP16-087","OP16-088","OP16-089","OP16-090","OP16-091","OP16-092","OP16-093","OP16-094","OP16-095","OP16-096","OP16-097","OP16-098","OP16-099","OP16-100","OP16-101","OP16-102","OP16-103","OP16-104","OP16-105","OP16-106","OP16-107","OP16-108","OP16-109","OP16-110","OP16-111","OP16-112","OP16-113","OP16-114","OP16-115","OP16-116","OP16-117","OP16-118","OP16-119","OP17-001","OP17-002","OP17-003","OP17-004","OP17-005","OP17-006","OP17-007","OP17-008","OP17-009","OP17-010","OP17-011","OP17-012","OP17-013","OP17-014","OP17-015","OP17-016","OP17-017","OP17-018","OP17-019","OP17-020","OP17-021","OP17-022","OP17-023","OP17-024","OP17-025","OP17-026","OP17-027","OP17-028","OP17-029","OP17-030","OP17-031","OP17-032","OP17-033","OP17-034","OP17-035","OP17-036","OP17-037","OP17-038","OP17-039","OP17-040","OP17-041","OP17-042","OP17-043","OP17-044","OP17-045","OP17-046","OP17-047","OP17-048","OP17-049","OP17-050","OP17-051","OP17-052","OP17-053","OP17-054","OP17-055","OP17-056","OP17-057","OP17-058","OP17-059","OP17-060","OP17-061","OP17-062","OP17-063","OP17-064","OP17-065","OP17-066","OP17-067","OP17-068","OP17-069","OP17-070","OP17-071","OP17-072","OP17-073","OP17-074","OP17-075","OP17-076","OP17-077","OP17-078","OP17-079","OP17-080","OP17-081","OP17-082","OP17-083","OP17-084","OP17-085","OP17-086","OP17-087","OP17-088","OP17-089","OP17-090","OP17-091","OP17-092","OP17-093","OP17-094","OP17-095","OP17-096","OP17-097","OP17-098","OP17-099","OP17-100","OP17-101","OP17-102","OP17-103","OP17-104","OP17-105","OP17-106","OP17-107","OP17-108","OP17-109","OP17-110","OP17-111","OP17-112","OP17-113","OP17-114","OP17-115","OP17-116","OP17-117","OP17-118","OP17-119","OP18-001","OP18-002","OP18-003","OP18-004","OP18-005","OP18-006","OP18-007","OP18-008","OP18-009","OP18-010","OP18-011","OP18-012","OP18-013","OP18-014","OP18-015","OP18-016","OP18-017","OP18-018","OP18-019","OP18-020","OP18-021","OP18-022","OP18-023","OP18-024","OP18-025","OP18-026","OP18-027","OP18-028","OP18-029","OP18-030","OP18-031","OP18-032","OP18-033","OP18-034","OP18-035","OP18-036","OP18-037","OP18-038","OP18-039","OP18-040","OP18-041","OP18-042","OP18-043","OP18-044","OP18-045","OP18-046","OP18-047","OP18-048","OP18-049","OP18-050","OP18-051","OP18-052","OP18-053","OP18-054","OP18-055","OP18-056","OP18-057","OP18-058","OP18-059","OP18-060","OP18-061","OP18-062","OP18-063","OP18-064","OP18-065","OP18-066","OP18-067","OP18-068","OP18-069","OP18-070","OP18-071","OP18-072","OP18-073","OP18-074","OP18-075","OP18-076","OP18-077","OP18-078","OP18-079","OP18-080","OP18-081","OP18-082","OP18-083","OP18-084","OP18-085","OP18-086","OP18-087","OP18-088","OP18-089","OP18-090","OP18-091","OP18-092","OP18-093","OP18-094","OP18-095","OP18-096","OP18-097","OP18-098","OP18-099","OP18-100","OP18-101","OP18-102","OP18-103","OP18-104","OP18-105","OP18-106","OP18-107","OP18-108","OP18-109","OP18-110","OP18-111","OP18-112","OP18-113","OP18-114","OP18-115","OP18-116","OP18-117","OP18-118","OP18-119","EB01-001","EB01-002","EB01-003","EB01-004","EB01-005","EB01-006","EB01-007","EB01-008","EB01-009","EB01-010","EB01-011","EB01-012","EB01-013","EB01-014","EB01-015","EB01-016","EB01-017","EB01-018","EB01-019","EB01-020","EB01-021","EB01-022","EB01-023","EB01-024","EB01-025","EB01-026","EB01-027","EB01-028","EB01-029","EB01-030","EB01-031","EB01-032","EB01-033","EB01-034","EB01-035","EB01-036","EB01-037","EB01-038","EB01-039","EB01-040","EB01-041","EB01-042","EB01-043","EB01-044","EB01-045","EB01-046","EB01-047","EB01-048","EB01-049","EB01-050","EB01-051","EB01-052","EB01-053","EB01-054","EB01-055","EB01-056","EB01-057","EB01-058","EB01-059","EB01-060","EB01-061","EB02-001","EB02-002","EB02-003","EB02-004","EB02-005","EB02-006","EB02-007","EB02-008","EB02-009","EB02-010","EB02-011","EB02-012","EB02-013","EB02-014","EB02-015","EB02-016","EB02-017","EB02-018","EB02-019","EB02-020","EB02-021","EB02-022","EB02-023","EB02-024","EB02-025","EB02-026","EB02-027","EB02-028","EB02-029","EB02-030","EB02-031","EB02-032","EB02-033","EB02-034","EB02-035","EB02-036","EB02-037","EB02-038","EB02-039","EB02-040","EB02-041","EB02-042","EB02-043","EB02-044","EB02-045","EB02-046","EB02-047","EB02-048","EB02-049","EB02-050","EB02-051","EB02-052","EB02-053","EB02-054","EB02-055","EB02-056","EB02-057","EB02-058","EB02-059","EB02-060","EB02-061","EB03-001","EB03-002","EB03-003","EB03-004","EB03-005","EB03-006","EB03-007","EB03-008","EB03-009","EB03-010","EB03-011","EB03-012","EB03-013","EB03-014","EB03-015","EB03-016","EB03-017","EB03-018","EB03-019","EB03-020","EB03-021","EB03-022","EB03-023","EB03-024","EB03-025","EB03-026","EB03-027","EB03-028","EB03-029","EB03-030","EB03-031","EB03-032","EB03-033","EB03-034","EB03-035","EB03-036","EB03-037","EB03-038","EB03-039","EB03-040","EB03-041","EB03-042","EB03-043","EB03-044","EB03-045","EB03-046","EB03-047","EB03-048","EB03-049","EB03-050","EB03-051","EB03-052","EB03-053","EB03-054","EB03-055","EB03-056","EB03-057","EB03-058","EB03-059","EB03-060","EB03-061","EB05-001","EB05-002","EB05-003","EB05-004","EB05-005","EB05-006","EB05-007","EB05-008","EB05-009","EB05-010","EB05-011","EB05-012","EB05-013","EB05-014","EB05-015","EB05-016","EB05-017","EB05-018","EB05-019","EB05-020","EB05-021","EB05-022","EB05-023","EB05-024","EB05-025","EB05-026","EB05-027","EB05-028","EB05-029","EB05-030","EB05-031","EB05-032","EB05-033","EB05-034","EB05-035","EB05-036","EB05-037","EB05-038","EB05-039","EB05-040","EB05-041","EB05-042","EB05-043","EB05-044","EB05-045","EB05-046","EB05-047","EB05-048","EB05-049","EB05-050","EB05-051","EB05-052","EB05-053","EB05-054","EB05-055","EB05-056","EB05-057","EB05-058","EB05-059","EB05-060","EB05-061","EB04-001","EB04-002","EB04-003","EB04-004","EB04-005","EB04-006","EB04-007","EB04-008","EB04-009","EB04-010","EB04-011","EB04-012","EB04-013","EB04-014","EB04-015","EB04-016","EB04-017","EB04-018","EB04-019","EB04-020","EB04-021","EB04-022","EB04-023","EB04-024","EB04-025","EB04-026","EB04-027","EB04-028","EB04-029","EB04-030","EB04-031","EB04-032","EB04-033","EB04-034","EB04-035","EB04-036","EB04-037","EB04-038","EB04-039","EB04-040","EB04-041","EB04-042","EB04-043","EB04-044","EB04-045","EB04-046","EB04-047","EB04-048","EB04-049","EB04-050","EB04-051","EB04-052","EB04-053","EB04-054","EB04-055","EB04-056","EB04-057","EB04-058","EB04-059","EB04-060","EB04-061","PRB01-001","PRB02-001","PRB02-002","PRB02-003","PRB02-004","PRB02-005","PRB02-006","PRB02-007","PRB02-008","PRB02-009","PRB02-010","PRB02-011","PRB02-012","PRB02-013","PRB02-014","PRB02-015","PRB02-016","PRB02-017","PRB02-018"];
@@ -853,6 +967,371 @@ importBackup=async function(file){let urls={};if(file?.name?.toLowerCase().endsW
 // Link in modal should always be the current actual source; a local blob is not a shareable public URL.
 const v5OldImageLoaded=window.imageLoaded;
 window.imageLoaded=function(img){v5OldImageLoaded(img);if(modalId&&img.closest('#modalArt')&&img.dataset.cardId===modalId&&img.src.startsWith('https://'))$('modalPhotoLink').href=img.src;};
+
+/* V6 — suivi patrimonial, classeur, achats, historique, sauvegardes et fusion cloud.
+   La clé historique "op-tcg-collection-checklist-v4" et les identifiants de cartes sont conservés. */
+const V6_EXTRA_KEY='op-tcg-v6-extras', V6_DB='op-tcg-v6-history', V6_DBSTORE='snapshots';
+const v6Default={settings:{budget:null,alertPercent:15,updatedAt:''},priceHistory:{},activity:[]};
+let v6Extras=readStore(V6_EXTRA_KEY,v6Default);
+if(!v6Extras||typeof v6Extras!=='object')v6Extras=structuredClone(v6Default);
+v6Extras.settings={...v6Default.settings,...(v6Extras.settings||{})};
+v6Extras.priceHistory=v6Extras.priceHistory&&typeof v6Extras.priceHistory==='object'?v6Extras.priceHistory:{};
+v6Extras.activity=Array.isArray(v6Extras.activity)?v6Extras.activity:[];
+let v6Tab='catalogue',v6BinderPage=0,v6CurrentHistoryId='',v6DBPromise=null,v6CloudPending=false,v6CloudBusy=null,v6LastRevisionDay='',v6WarnedHistory=false;
+const v6Now=()=>new Date().toISOString();
+const v6Id=()=>typeof crypto!=='undefined'&&crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.random().toString(36).slice(2);
+const v6ShortDate=x=>{const t=Date.parse(x||'');return Number.isFinite(t)?new Date(t).toLocaleString('fr-FR'):'—'};
+function v6SaveExtra(){try{localStorage.setItem(V6_EXTRA_KEY,JSON.stringify(v6Extras));}catch{showBanner('Le stockage local est plein : télécharge une sauvegarde JSON pour conserver l’historique.','warn')}}
+function v6Event(type,id='',detail=''){
+  v6Extras.activity.unshift({eventId:v6Id(),at:v6Now(),type,id,detail:String(detail).slice(0,160)});
+  v6Extras.activity=v6Extras.activity.slice(0,240);v6SaveExtra();
+}
+function v6CardUpdate(id,changes,type='Modification'){
+  if(!valid(id))return;
+  const before=collection[id]||{};const ts=v6Now();
+  collection[id]={...before,...changes,updatedAt:ts,_fieldUpdated:{...(before._fieldUpdated||{}),...Object.fromEntries(Object.keys(changes).map(k=>[k,ts]))}};
+  persist();v6Event(type,id,Object.keys(changes).map(k=>k+' : '+String(changes[k])).join(' · '));scheduleCloudSave();
+  renderAll();v6FillModal(id);
+}
+function v6MergeRecord(a={},b={}){
+  const out={...b,...a};let newest=Math.max(Date.parse(a.updatedAt||'')||0,Date.parse(b.updatedAt||'')||0);
+  const times={...(b._fieldUpdated||{}),...(a._fieldUpdated||{})};
+  for(const key of new Set([...Object.keys(a),...Object.keys(b)])){
+    if(key==='_fieldUpdated'||key==='updatedAt')continue;
+    if(!(key in a)){out[key]=b[key];continue}if(!(key in b)){out[key]=a[key];continue}
+    const ta=Date.parse(a._fieldUpdated?.[key]||a.updatedAt||'')||0;
+    const tb=Date.parse(b._fieldUpdated?.[key]||b.updatedAt||'')||0;
+    if(tb>ta){out[key]=b[key];times[key]=b._fieldUpdated?.[key]||b.updatedAt}
+    else{out[key]=a[key];times[key]=a._fieldUpdated?.[key]||a.updatedAt}
+  }
+  out._fieldUpdated=times;
+  out.updatedAt=newest?new Date(newest).toISOString():(a.updatedAt||b.updatedAt||'');
+  return out;
+}
+function v6MergeCollections(local,remote){const out={};for(const id of new Set([...Object.keys(local||{}),...Object.keys(remote||{})])){
+  if(!valid(id))continue;
+  if(local?.[id]&&remote?.[id])out[id]=v6MergeRecord(local[id],remote[id]);else out[id]=local?.[id]||remote?.[id];
+}return out}
+function v6MergeExtras(a,b){
+ const updatedA=Date.parse(a?.settings?.updatedAt||'')||0,updatedB=Date.parse(b?.settings?.updatedAt||'')||0;
+ const settings=updatedB>updatedA?{...a.settings,...b.settings}:{...b?.settings,...a.settings};
+ const priceHistory={...(a.priceHistory||{})};
+ for(const [productId,points] of Object.entries(b?.priceHistory||{})){
+  if(!/^\d{1,12}$/.test(productId)||!Array.isArray(points))continue;
+  const map=new Map((priceHistory[productId]||[]).map(x=>[x.week,x]));
+  for(const x of points)if(x&&/^\d{4}-\d{2}-\d{2}$/.test(x.week)&&Number.isFinite(Number(x.value)))map.set(x.week,x);
+  priceHistory[productId]=[...map.values()].sort((x,y)=>x.week.localeCompare(y.week)).slice(-32);
+ }
+ const entries=new Map();for(const ev of [...(b?.activity||[]),...(a.activity||[])])if(ev?.eventId)entries.set(ev.eventId,ev);
+ return {settings,priceHistory,activity:[...entries.values()].sort((x,y)=>String(y.at).localeCompare(String(x.at))).slice(0,240)};
+}
+function v6ApplyMergedData(rows,extra,rerender=true){
+ Object.keys(collection).forEach(k=>delete collection[k]);Object.assign(collection,rows);
+ if(extra)v6Extras=v6MergeExtras(v6Extras,extra);
+ v6SaveExtra();persist();catalog=includeOwnedOrphans(catalog);if(rerender)renderAll();
+}
+const v6PrevSetQty=setQty,v6PrevSetNote=setNote;
+setQty=function(id,qty){const old=getQty(id);v6PrevSetQty(id,qty);const value=getQty(id);if(old!==value){const ts=collection[id]?.updatedAt||v6Now();collection[id]._fieldUpdated={...(collection[id]._fieldUpdated||{}),qty:ts};persist();v6Event('Quantité',id,old+' → '+value);v6RefreshDashboard();v6RenderActive();}};
+setNote=function(id,text){const old=getNote(id);v6PrevSetNote(id,text);if(old!==text){const ts=collection[id]?.updatedAt||v6Now();collection[id]._fieldUpdated={...(collection[id]._fieldUpdated||{}),note:ts};persist();}};
+// Les anciennes sauvegardes conservent leurs champs ; les V6 ajoutent des champs, sans migration destructive.
+const v6OldBackup=buildBackup;
+buildBackup=function(){const raw=v6OldBackup();raw.version=7;raw.app='One Piece TCG V6';raw.v6={settings:v6Extras.settings,priceHistory:v6Extras.priceHistory,activity:v6Extras.activity};raw.updated_at=v6Now();return raw};
+const v6OldImport=importBackup;
+importBackup=async function(file){
+ if(!file)return false;let raw=null;
+ if(file.name.toLowerCase().endsWith('.json'))try{raw=JSON.parse(await file.text())}catch{}
+ await v6SnapshotCreate('Avant import · sécurité',false);
+ const ok=await v6OldImport(file);if(!ok)return false;
+ if(raw?.format==='onepiece-tcg-inventory'){
+   for(const [id,v] of Object.entries(raw.collection||{}))if(valid(id)&&v&&typeof v==='object'){
+     const allowed=['wish','wishPriority','wishQty','targetPrice','binder','binderPage','binderSlot','box','cmProductId','photoUrl','updatedAt','_fieldUpdated'];
+     const next={...collection[id]};for(const k of allowed)if(Object.hasOwn(v,k))next[k]=v[k];collection[id]=next;
+   }
+   if(raw.v6)v6Extras=v6MergeExtras(v6Extras,raw.v6);
+ }
+ v6SaveExtra();persist();renderAll();v6Event('Restauration','','Sauvegarde '+(file.name||'fichier'));
+ if(cloudUser)scheduleCloudSave();return true;
+};
+// Les sauvegardes téléchargées incluent les quantités, les photos sous forme d'URL, les rangements, la wishlist et l'historique des prix.
+function v6View(tab){
+ if(!['catalogue','binder','wishlist','market','history'].includes(tab))tab='catalogue';v6Tab=tab;
+ document.querySelectorAll('[data-v6-tab]').forEach(el=>{el.classList.toggle('active',el.dataset.v6Tab===tab);el.setAttribute('aria-selected',String(el.dataset.v6Tab===tab))});
+ document.querySelector('.layout').hidden=tab!=='catalogue';
+ for(const name of ['Binder','Wishlist','Market','History'])$('v6Panel'+name).hidden=tab.toLowerCase()!==name.toLowerCase();
+ v6RenderActive();
+}
+function v6RenderActive(){
+ if(v6Tab==='binder')v6RenderBinder();else if(v6Tab==='wishlist')v6RenderWishlist();else if(v6Tab==='market')v6RenderMarket();else if(v6Tab==='history')v6RenderHistory();
+}
+function v6CatalogIndex(){return new Map(catalog.map(c=>[c.id,c]))}
+function v6Card(c){return typeof c==='string'?catalog.find(x=>x.id===c)||{id:c,name:c,set:prefix(c),rarity:'',colors:[],url:photoUrl(c)}:c}
+function v6Exact(c){const p=priceQuote(c);return p&&Number.isFinite(p.value)?p:null}
+function v6Valuation(){
+ let total=0,count=0,pieces=0,unpriced=0;const per={};const cards=[];
+ for(const c of catalog){const qty=getQty(c.id);if(!qty)continue;const p=v6Exact(c);if(!p){unpriced++;continue}
+  const v=p.value*qty;total+=v;count++;pieces+=qty;per[c.set]=(per[c.set]||0)+v;cards.push({c,qty,p,total:v});
+ }
+ return {total,count,pieces,unpriced,per,cards,owned:catalog.filter(c=>getQty(c.id)>0).length};
+}
+function v6WishItems(){const m=v6CatalogIndex();return Object.entries(collection).filter(([id,v])=>valid(id)&&v?.wish).map(([id,v])=>({c:m.get(id)||v6Card(id),v}));}
+function v6WishTotals(){let exact=0,known=0,unknown=0;const items=v6WishItems().filter(x=>!getQty(x.c.id));for(const {c,v} of items){const p=v6Exact(c);if(p){exact+=p.value*Math.max(1,Number(v.wishQty)||1);known++}else unknown++}return {exact,known,unknown,total:items.length}}
+function v6Alerts(){
+ const threshold=Math.max(1,Number(v6Extras.settings.alertPercent)||15);const matches=[];const byId=v6CatalogIndex();
+ for(const [id,row] of Object.entries(collection)){
+  if(!valid(id)||!(getQty(id)>0||row.wish))continue;
+  const c=byId.get(id);if(!c)continue;const q=v6Exact(c);if(!q)continue;
+  const points=(v6Extras.priceHistory[q.productId]||[]).filter(x=>Number(x.value)>0).sort((a,b)=>a.week.localeCompare(b.week));
+  if(points.length<2)continue;const a=points.at(-2),b=points.at(-1);const change=(b.value-a.value)/a.value*100;
+  if(Math.abs(change)>=threshold)matches.push({c,a,b,change,kind:change>0?'hausse':'baisse'});
+ }
+ return matches.sort((a,b)=>Math.abs(b.change)-Math.abs(a.change));
+}
+function v6RefreshDashboard(){
+ const v=v6Valuation(),w=v6WishTotals();
+ $('v6Value').textContent=eur(v.total);
+ $('v6ValueNote').textContent=v.unpriced?`${v.unpriced} références possédées sans prix exact`:v.owned?'Toutes les références possédées sont cotées':'Aucune carte possédée';
+ $('v6Priced').textContent=fmt(v.count)+' / '+fmt(v.owned);
+ $('v6Wish').textContent=fmt(w.total)+' cartes';
+ $('v6WishNote').textContent=v6Extras.settings.budget===null?'Budget non défini':`Budget ${eur(v6Extras.settings.budget)} · prix connus ${eur(w.exact)} (${w.unknown} sans prix)`;
+ $('v6Alerts').textContent=fmt(v6Alerts().length);
+}
+const v6OldRenderAll=renderAll;
+renderAll=function(full=false){v6OldRenderAll(full);v6RefreshDashboard();v6RenderActive()};
+function v6UpdateBinderOptions(){const cur=$('v6BinderSet').value;const keys=[...new Set(catalog.map(c=>c.set))].sort();
+ $('v6BinderSet').innerHTML='<option value="all">Toutes les extensions</option>'+keys.map(s=>`<option value="${escapeHTML(s)}">${escapeHTML(s)}</option>`).join('');$('v6BinderSet').value=keys.includes(cur)?cur:'all';
+}
+function v6BinderFiltered(){const set=$('v6BinderSet').value,col=$('v6BinderColor').value,r=$('v6BinderRarity').value,status=$('v6BinderStatus').value,query=$('v6BinderSearch').value.trim().toLowerCase();
+ const cards=catalog.filter(c=>{
+ if(set!=='all'&&c.set!==set)return false;
+ if(col!=='all'&&(col==='multi'?c.colors?.length<2:!(c.colors||[]).some(x=>colorCode(x)===colorCode(col))))return false;
+ if(r!=='all'&&rarityCode(c)!==r)return false;
+ if(status==='owned'&&!getQty(c.id))return false;if(status==='missing'&&getQty(c.id))return false;if(status==='wished'&&!collection[c.id]?.wish)return false;
+ return !query||(c.id+' '+c.name).toLowerCase().includes(query);
+ });
+ const sort=$('v6BinderSort').value;if(sort==='rarity')cards.sort((a,b)=>rarityRank(a)-rarityRank(b)||compareCards(a,b));
+ if(sort==='name')cards.sort((a,b)=>collator.compare(a.name,b.name));
+ if(sort==='location')cards.sort((a,b)=>collator.compare(String(collection[a.id]?.binder||'~'),String(collection[b.id]?.binder||'~'))||Number(collection[a.id]?.binderPage||9999)-Number(collection[b.id]?.binderPage||9999)||Number(collection[a.id]?.binderSlot||9999)-Number(collection[b.id]?.binderSlot||9999));
+ return cards;
+}
+function v6LocationText(v){const bits=[v?.binder&&'Classeur '+v.binder,v?.binderPage&&'page '+v.binderPage,v?.binderSlot&&'case '+v.binderSlot,v?.box&&'boîte '+v.box].filter(Boolean);return bits.length?bits.join(' · '):'Rangement non précisé'}
+function v6RenderBinder(){v6UpdateBinderOptions();const cards=v6BinderFiltered(),pages=Math.max(1,Math.ceil(cards.length/9));v6BinderPage=Math.max(0,Math.min(v6BinderPage,pages-1));const block=cards.slice(v6BinderPage*9,(v6BinderPage+1)*9);
+ $('v6BinderCards').innerHTML=block.map(c=>{const own=collection[c.id]||{};return `<article class="v6-binder-item ${getQty(c.id)?'owned':''}"><div data-v6detail="${escapeHTML(c.id)}" style="width:100%;display:flex;justify-content:center">${imageMarkup(c,true)}</div><div class="v6-serial">${escapeHTML(c.id)}</div><div class="v6-cardname" title="${escapeHTML(c.name)}">${escapeHTML(c.name)}</div><div class="v6-location" title="${escapeHTML(v6LocationText(own))}">${escapeHTML(v6LocationText(own))}</div><div class="v6-foot"><input class="check" aria-label="Je possède ${escapeHTML(c.id)}" data-v6qty="${escapeHTML(c.id)}" type="checkbox" ${getQty(c.id)?'checked':''}/><span class="qty"><button data-v6minus="${escapeHTML(c.id)}" aria-label="Retirer">−</button><output>${getQty(c.id)}</output><button data-v6plus="${escapeHTML(c.id)}" aria-label="Ajouter">+</button></span></div></article>`}).join('')||'<div class="empty" style="grid-column:1/-1">Aucune carte avec ces filtres.</div>';
+ $('v6BinderInfo').textContent=fmt(cards.length)+' impressions · '+fmt(cards.filter(c=>getQty(c.id)).length)+' possédées';$('v6BinderPage').textContent=(v6BinderPage+1)+' / '+pages;$('v6BinderPrev').disabled=v6BinderPage===0;$('v6BinderNext').disabled=v6BinderPage>=pages-1;
+ if(typeof v5HydrateLocalImages==='function')v5HydrateLocalImages($('v6BinderCards')).catch(()=>{});
+}
+function v6WishlistMarkup({c,v}){const p=v6Exact(c),target=Number(v.targetPrice);const qty=Math.max(1,Number(v.wishQty)||1),priority=Number(v.wishPriority)||2;
+ return `<div class="v6-list-row"><button type="button" data-v6detail="${escapeHTML(c.id)}" style="border:0;background:none;padding:0">${imageMarkup(c)}</button><div><div class="v6-rowname">${escapeHTML(c.id)} · ${escapeHTML(c.name)}</div><div class="v6-rowmeta">${escapeHTML(variant(c.id))} · ${escapeHTML(c.set)} · ${escapeHTML(rarityLabel(c))}</div><div class="v6-rowmeta">${p?'Prix exact '+eur(p.value):'Prix exact non associé'}${Number.isFinite(target)&&target>0?' · objectif '+eur(target):''} · x${qty}${getQty(c.id)?' · déjà possédée':''}</div></div><div class="v6-rowtools"><span class="v6-tag ${priority===1?'warn':''}">${priority===1?'Urgente':priority===2?'Importante':'Plus tard'}</span><button class="small" data-v6detail="${escapeHTML(c.id)}">Détails</button><button class="small" data-v6remove="${escapeHTML(c.id)}">Retirer</button></div></div>`;
+}
+function v6RenderWishlist(){const list=v6WishItems().filter(({c,v})=>{const scope=$('v6WishScope').value,p=$('v6WishPriorityFilter').value,q=$('v6WishSearch').value.toLowerCase().trim();return (scope==='all'||(scope==='missing'?!getQty(c.id):!!getQty(c.id)))&&(p==='all'||String(v.wishPriority||2)===p)&&(!q||(c.id+' '+c.name).toLowerCase().includes(q))}).sort((a,b)=>(Number(a.v.wishPriority)||2)-(Number(b.v.wishPriority)||2)||compareCards(a.c,b.c));
+ $('v6Budget').value=v6Extras.settings.budget??'';const w=v6WishTotals(),budget=v6Extras.settings.budget;
+ $('v6WishSummary').textContent=fmt(w.total)+' impressions à rechercher · '+eur(w.exact)+' de prix confirmés ('+fmt(w.known)+' cotées, '+fmt(w.unknown)+' non cotées)'+(budget===null?' · aucun budget fixé':` · budget ${eur(budget)}, écart ${eur(budget-w.exact)} (sans les cartes non cotées)`);
+ $('v6WishlistList').innerHTML=list.slice(0,150).map(v6WishlistMarkup).join('')+(list.length>150?'<p class="v6-help">150 premières cartes affichées : utilise les filtres pour affiner.</p>':'')||'<div class="empty">Ta liste est vide. Ouvre une carte du catalogue et sélectionne « Ajouter à ma wishlist ».</div>';
+ if(typeof v5HydrateLocalImages==='function')v5HydrateLocalImages($('v6WishlistList')).catch(()=>{});
+}
+function v6RenderMarket(){const val=v6Valuation();const rows=Object.entries(val.per).sort((a,b)=>b[1]-a[1]);const max=rows[0]?.[1]||1;
+ $('v6ValueBySet').innerHTML=rows.slice(0,35).map(([set,value])=>`<div class="v6-barrow"><strong>${escapeHTML(set)}</strong><span class="v6-bartrack"><i style="width:${(value/max*100).toFixed(2)}%"></i></span><strong style="text-align:right">${eur(value)}</strong></div>`).join('')||'<p class="hint">Aucune cotation exacte sur tes cartes possédées. Associe les produits Cardmarket depuis leurs fiches.</p>';
+ $('v6MarketMissing').textContent=`Valeur partielle ${eur(val.total)} · ${val.count}/${val.owned} références possédées couvertes · ${val.unpriced} sans prix exact. La valeur réelle peut être supérieure ou inférieure (état, langue, frais, disponibilité).`;
+ $('v6AlertThreshold').value=v6Extras.settings.alertPercent;
+ const alertItems=v6Alerts().slice(0,20);$('v6RecentAlerts').innerHTML=alertItems.map(x=>`<div class="v6-event"><b>${escapeHTML(x.c.id)} — ${escapeHTML(x.c.name)}</b> · <span class="${x.change>0?'v6-warn':'v6-ok'}">${x.change>0?'+':''}${x.change.toFixed(1)} %</span><div class="hint">${eur(x.a.value)} → ${eur(x.b.value)} · ${x.b.week}</div></div>`).join('')||'<p class="hint">Aucune variation dépassant ton seuil parmi les produits exacts suivis sur au moins deux relevés.</p>';
+ const cards=[...val.cards].sort((a,b)=>b.total-a.total);$('v6TopCards').innerHTML=cards.slice(0,12).map(({c,p,qty,total})=>`<div class="v6-list-row"><div class="v6-tag ok">${eur(total)}</div><div><strong>${escapeHTML(c.id)} · ${escapeHTML(c.name)}</strong><div class="v6-rowmeta">${escapeHTML(variant(c.id))} · ${qty} × ${eur(p.value)} · ${escapeHTML(p.productName||'')}</div></div><button class="small" data-v6detail="${escapeHTML(c.id)}">Voir</button></div>`).join('')||'<p class="hint">Aucun produit associé et coté.</p>';
+ const chosen=$('v6HistoryCard').value;const withPrice=catalog.filter(c=>(getQty(c.id)>0||collection[c.id]?.wish)&&v6Exact(c)).sort((a,b)=>compareCards(a,b));
+ $('v6HistoryCard').innerHTML='<option value="">Choisir une carte</option>'+withPrice.slice(0,1200).map(c=>`<option value="${escapeHTML(c.id)}">${escapeHTML(c.id+' '+c.name+' · '+variant(c.id))}</option>`).join('');$('v6HistoryCard').value=withPrice.some(x=>x.id===chosen)?chosen:(withPrice[0]?.id||'');v6DrawHistoryChart();
+}
+function v6DrawHistoryChart(){const id=$('v6HistoryCard').value,c=catalog.find(x=>x.id===id),q=c&&v6Exact(c),points=q?(v6Extras.priceHistory[q.productId]||[]):[];const svg=$('v6PriceChart');svg.innerHTML='';
+ if(!points.length){$('v6PriceChartCaption').textContent='Aucun relevé enregistré pour cette impression. Les premiers points apparaîtront après récupération des prix.';svg.setAttribute('aria-label','Aucun relevé');return;}
+ const data=points.filter(x=>Number.isFinite(Number(x.value))).slice(-26);const values=data.map(x=>Number(x.value));const lo=Math.min(...values),hi=Math.max(...values),range=Math.max(0.01,hi-lo);const W=600,H=150,pad=24;
+ const xy=data.map((x,i)=>({x:pad+(W-2*pad)*(data.length===1?.5:i/(data.length-1)),y:H-pad-((x.value-lo)/range)*(H-2*pad)}));
+ const line=xy.map((p,i)=>(i?'L':'M')+p.x.toFixed(1)+','+p.y.toFixed(1)).join(' ');
+ svg.innerHTML=`<line x1="24" y1="125" x2="576" y2="125" stroke="#42607d" stroke-width="1"/><path d="${line}" fill="none" stroke="#f7c76a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>${xy.map((p,i)=>`<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3" fill="#91d5ff"><title>${data[i].week}: ${eur(data[i].value)}</title></circle>`).join('')}`;
+ svg.setAttribute('aria-label','Prix de '+id+' de '+eur(values[0])+' à '+eur(values.at(-1)));
+ $('v6PriceChartCaption').textContent=`${data.length} relevé(s) · du ${data[0].week} au ${data.at(-1).week} · dernier prix ${eur(values.at(-1))} · ${q?.productName||''}`;
+}
+// Historique de cotations : prix réels d'un idProduct précis, jamais une fourchette approximative.
+function v6Week(date){const d=new Date(date||Date.now());if(!Number.isFinite(d.getTime()))return v6Week(new Date());d.setUTCHours(0,0,0,0);d.setUTCDate(d.getUTCDate()-((d.getUTCDay()+6)%7));return d.toISOString().slice(0,10)}
+function v6RecordPrice(productId,week,value,source='Cardmarket'){
+ if(!/^\d{1,12}$/.test(String(productId))||!/^\d{4}-\d{2}-\d{2}$/.test(week)||!Number.isFinite(Number(value))||Number(value)<0)return false;
+ const old=v6Extras.priceHistory[productId]||[];
+ const prev=old.find(x=>x.week===week);
+ if(prev&&Number(prev.value)===Number(value))return false;
+ const next=old.filter(x=>x.week!==week);
+ next.push({week,value:Math.round(Number(value)*100)/100,source});next.sort((a,b)=>a.week.localeCompare(b.week));
+ v6Extras.priceHistory[productId]=next.slice(-32);return true;
+}
+let v6HistoryPublicLoaded=false;
+async function v6ReadPublishedHistory(){
+ if(v6HistoryPublicLoaded||!(location.protocol==='https:'||location.hostname==='localhost'))return;
+ v6HistoryPublicLoaded=true;
+ try{const response=await fetch('./prix_historique_cardmarket.json?nocache='+Math.floor(Date.now()/86400000),{cache:'no-store'});if(!response.ok)return;
+   const x=await response.json();if(!Array.isArray(x.weeks)||typeof x.byProduct!=='object')return;
+   const ids=new Set();for(const c of catalog)if(getQty(c.id)>0||collection[c.id]?.wish){const p=v6Exact(c);if(p)ids.add(p.productId)}
+   let changed=false;for(const id of ids){const arr=x.byProduct[id];if(!Array.isArray(arr))continue;
+     for(let i=0;i<Math.min(x.weeks.length,arr.length);i++)if(arr[i]!==null&&arr[i]!==undefined)changed=v6RecordPrice(id,x.weeks[i],arr[i],'Cardmarket · historique public')||changed;
+   }
+   if(changed){v6SaveExtra();v6RefreshDashboard();if(v6Tab==='market')v6RenderMarket();scheduleCloudSave()}
+ }catch{ /* Le fichier d'historique public est facultatif. */ }
+}
+function v6CaptureCurrentPrices(){
+ if(!cmPrices.size)return;
+ const week=v6Week(priceState.guideAt||priceState.at||Date.now());let changed=false;
+ for(const c of catalog)if(getQty(c.id)>0||collection[c.id]?.wish){const p=v6Exact(c);if(p)changed=v6RecordPrice(p.productId,week,p.value,'Cardmarket · relevé')||changed}
+ if(changed){v6SaveExtra();v6RefreshDashboard();if(v6Tab==='market')v6RenderMarket();scheduleCloudSave()}
+ v6ReadPublishedHistory();
+}
+const v6OldApplyPriceData=applyPriceData;
+applyPriceData=function(products,prices,origin){const x=v6OldApplyPriceData(products,prices,origin);v6CaptureCurrentPrices();return x};
+// Snapshots IndexedDB : points de restauration locaux séparés du cache de photos V5.
+async function v6DBOpen(){if(!('indexedDB' in window))return null;if(v6DBPromise)return v6DBPromise;
+ v6DBPromise=new Promise(resolve=>{try{const req=indexedDB.open(V6_DB,1);req.onupgradeneeded=()=>{if(!req.result.objectStoreNames.contains(V6_DBSTORE))req.result.createObjectStore(V6_DBSTORE,{keyPath:'id'})};req.onsuccess=()=>resolve(req.result);req.onerror=()=>resolve(null)}catch{resolve(null)}});
+ return v6DBPromise;
+}
+async function v6DBAll(){const db=await v6DBOpen();if(!db)return [];
+ return new Promise(resolve=>{try{const r=db.transaction(V6_DBSTORE,'readonly').objectStore(V6_DBSTORE).getAll();r.onsuccess=()=>resolve(r.result||[]);r.onerror=()=>resolve([])}catch{resolve([])}});
+}
+async function v6DBPut(obj){const db=await v6DBOpen();if(!db)return false;
+ return new Promise(resolve=>{try{const tx=db.transaction(V6_DBSTORE,'readwrite');tx.objectStore(V6_DBSTORE).put(obj);tx.oncomplete=()=>resolve(true);tx.onerror=()=>resolve(false)}catch{resolve(false)}});
+}
+async function v6DBDelete(id){const db=await v6DBOpen();if(!db)return;await new Promise(resolve=>{try{const tx=db.transaction(V6_DBSTORE,'readwrite');tx.objectStore(V6_DBSTORE).delete(id);tx.oncomplete=resolve;tx.onerror=resolve}catch{resolve()}})}
+async function v6SnapshotCreate(reason='Copie manuelle',notify=true){
+ if(!Object.keys(collection).length){if(notify)showBanner('Aucune donnée saisie : commence par ajouter des cartes.','warn');return false}
+ const value={id:v6Id(),at:v6Now(),reason,payload:structuredClone(buildBackup())};const ok=await v6DBPut(value);
+ if(ok){const all=(await v6DBAll()).sort((a,b)=>String(b.at).localeCompare(String(a.at)));for(const old of all.slice(20))await v6DBDelete(old.id);if(notify)showBanner('Point de restauration enregistré sur cet appareil. Pour une copie indépendante, télécharge aussi ton JSON.','ok')}
+ else if(notify)showBanner('Stockage local de l’historique indisponible : télécharge ta sauvegarde JSON.','warn');
+ if(v6Tab==='history')v6RenderHistory();return ok;
+}
+function v6SafeSnapshot(s){return s?.format==='onepiece-tcg-inventory'&&s.collection&&typeof s.collection==='object'&&!Array.isArray(s.collection)}
+async function v6RestorePayload(payload,why='Restauration'){
+ if(!v6SafeSnapshot(payload))return showBanner('Cette version ne contient pas de sauvegarde compatible.','warn');
+ if(!confirm('Restaurer cette version ? La collection actuelle sera conservée dans un point de restauration de sécurité.'))return;
+ await v6SnapshotCreate('Avant restauration · sécurité',false);
+ const timestamp=v6Now(),old=structuredClone(collection);
+ const rows={};for(const id of new Set([...Object.keys(old),...Object.keys(payload.collection||{})])){
+   if(!valid(id))continue;
+   const raw=payload.collection?.[id];const v=raw&&typeof raw==='object'?{...raw}:{qty:0,wish:false,wishQty:1,note:'',binder:'',binderPage:'',binderSlot:'',box:''};
+   const fields={...v._fieldUpdated};for(const key of Object.keys(v))if(!['updatedAt','_fieldUpdated'].includes(key))fields[key]=timestamp;
+   rows[id]={...v,updatedAt:timestamp,_fieldUpdated:fields};
+ }
+ Object.keys(collection).forEach(k=>delete collection[k]);Object.assign(collection,rows);
+ if(payload.v6){v6Extras.settings={...v6Extras.settings,...payload.v6.settings,updatedAt:timestamp};v6Extras.priceHistory=v6MergeExtras(v6Extras,payload.v6).priceHistory;}
+ v6Event('Restauration','','Version historique : '+why);v6SaveExtra();persist();catalog=includeOwnedOrphans(catalog);renderAll();
+ if(cloudUser)await v6CloudSync(true,false);showBanner('Version restaurée : '+why+'. Pense à télécharger une nouvelle sauvegarde JSON.','ok');
+}
+async function v6RenderHistory(){
+ const local=(await v6DBAll()).sort((a,b)=>String(b.at).localeCompare(String(a.at)));
+ if(v6Tab!=='history')return;
+ $('v6SnapshotList').innerHTML=local.slice(0,20).map(x=>`<div class="v6-event"><b>${escapeHTML(x.reason)}</b><time>${escapeHTML(v6ShortDate(x.at))}</time><button class="small" data-v6restore="${escapeHTML(x.id)}">Restaurer</button></div>`).join('')||'<p class="hint">Aucun point de restauration local. Crée-en un avec le bouton ci-dessus.</p>';
+ $('v6Activity').innerHTML=(v6Extras.activity||[]).slice(0,90).map(e=>`<div class="v6-event"><time>${escapeHTML(v6ShortDate(e.at))}</time><b>${escapeHTML(e.type||'Modification')}</b>${e.id?' · '+escapeHTML(e.id):''}<div class="hint">${escapeHTML(e.detail||'')}</div></div>`).join('')||'<p class="hint">L’historique des changements commencera à se remplir dès tes prochaines modifications.</p>';
+}
+function v6HistoryVersionName(row){return (row.reason||'Version')+' — '+v6ShortDate(row.created_at)}
+async function v6CloudSaveVersion(reason='Sauvegarde de sécurité',quiet=true){
+ if(!cloudUser)return false;
+ try{const sb=await ensureCloud();const {error}=await sb.from('onepiece_collection_revisions').insert({user_id:cloudUser.id,reason,payload:buildBackup()});if(error)throw error;return true}
+ catch(e){if(!quiet)showBanner('Historique cloud indisponible : exécute schema_supabase_v6.sql dans ton projet. '+e.message,'warn');return false}
+}
+async function v6CloudLoadHistory(){
+ const el=$('v6HistoryCloud');if(!cloudUser){el.innerHTML='<p class="hint">Connecte-toi d’abord dans le panneau « Synchronisation cloud ».</p>';return}
+ el.textContent='Consultation des versions cloud…';try{const sb=await ensureCloud();const {data,error}=await sb.from('onepiece_collection_revisions').select('id,reason,created_at').eq('user_id',cloudUser.id).order('created_at',{ascending:false}).limit(25);if(error)throw error;
+ el.innerHTML=(data||[]).map(row=>`<div class="v6-event"><b>${escapeHTML(row.reason||'Sauvegarde cloud')}</b><time>${escapeHTML(v6ShortDate(row.created_at))}</time><button class="small" data-v6restorecloud="${escapeHTML(row.id)}">Restaurer</button></div>`).join('')||'<p class="hint">Aucune version cloud enregistrée. Crée un point de restauration pour commencer.</p>';
+ }catch(e){el.innerHTML='<p class="v6-warn">Historique cloud non accessible : exécute <code>schema_supabase_v6.sql</code>, puis reconnecte-toi. Les données de collection existantes ne sont pas affectées.</p>'}
+}
+async function v6RestoreCloud(id){
+ if(!cloudUser)return;try{const sb=await ensureCloud();const {data,error}=await sb.from('onepiece_collection_revisions').select('payload,reason,created_at').eq('user_id',cloudUser.id).eq('id',id).single();if(error)throw error;await v6RestorePayload(data.payload,v6HistoryVersionName(data));}catch(e){showBanner('Restauration cloud impossible : '+e.message,'warn')}
+}
+// Synchronisation optimiste : fusion par champ daté + comparaison updated_at évitant un écrasement concurrent.
+async function v6CloudSync(wantWrite=false,quiet=true){
+ if(v6CloudBusy){v6CloudPending=v6CloudPending||wantWrite;return v6CloudBusy;}
+ v6CloudBusy=(async()=>{
+  const client=await ensureCloud();const {data:auth,error:authError}=await client.auth.getUser();if(authError)throw authError;
+  cloudUser=auth?.user||null;if(!cloudUser)throw Error('Connecte-toi avec ton compte Supabase.');
+  for(let attempt=0;attempt<4;attempt++){
+   const {data,error}=await client.from('onepiece_collections').select('payload,updated_at').eq('user_id',cloudUser.id).maybeSingle();if(error)throw error;
+   const cloudRows=data?.payload?.collection||{};
+   const merged=v6MergeCollections(collection,cloudRows),nextExtras=v6MergeExtras(v6Extras,data?.payload?.v6||{});
+   const localChanged=JSON.stringify(collection)!==JSON.stringify(merged)||JSON.stringify(v6Extras)!==JSON.stringify(nextExtras);
+   const cloudChanged=!data||JSON.stringify(cloudRows)!==JSON.stringify(merged)||JSON.stringify(data.payload.v6||{})!==JSON.stringify(nextExtras);
+   if(localChanged){v6ApplyMergedData(merged,nextExtras,true);if(Array.isArray(data?.payload?.card_snapshot)){
+     const known=new Map(importedCatalog.map(c=>[c.id,c]));for(const c of data.payload.card_snapshot)if(c?.id&&valid(c.id)&&!known.has(c.id))known.set(c.id,c);
+     importedCatalog=[...known.values()];try{localStorage.setItem('op-tcg-owned-card-metadata-v5',JSON.stringify(importedCatalog))}catch{}
+   }}
+   if(!cloudChanged&&!wantWrite){cloudStatus('✓ Synchronisé · '+cloudUser.email+' · '+new Date().toLocaleString('fr-FR'),true);return true}
+   const backup=buildBackup(),now=v6Now();let write;
+   if(data){write=await client.from('onepiece_collections').update({payload:backup,updated_at:now}).eq('user_id',cloudUser.id).eq('updated_at',data.updated_at).select('user_id');
+    if(write.error)throw write.error;if(!write.data?.length)continue;}
+   else{write=await client.from('onepiece_collections').insert({user_id:cloudUser.id,payload:backup,updated_at:now});if(write.error){if(write.error.code==='23505')continue;throw write.error}}
+   cloudStatus('✓ Inventaire synchronisé · '+cloudUser.email+' · '+new Date().toLocaleString('fr-FR'),true);
+   const week=v6Week(now),key='op-tcg-v6-cloud-weekly-'+cloudUser.id;
+   if(Object.keys(collection).length&&v6LastRevisionDay!==week&&localStorage.getItem(key)!==week){
+     v6LastRevisionDay=week;
+     v6CloudSaveVersion('Copie cloud hebdomadaire · '+week,true).then(success=>{if(success)try{localStorage.setItem(key,week)}catch{}}).catch(()=>{});
+   }
+   return true;
+  }
+  throw Error('Modifications concurrentes : nouvelle tentative à la prochaine connexion.');
+ })();
+ try{return await v6CloudBusy}catch(e){cloudStatus('⚠ Synchronisation : '+(e?.message||e));if(!quiet)showBanner('La version locale est conservée. Vérifie Supabase et réessaie la synchronisation.','warn');return false}
+ finally{v6CloudBusy=null;if(v6CloudPending){v6CloudPending=false;setTimeout(()=>v6CloudSync(true,true),1000)}}
+}
+// La logique V5 de connexion appelle pullCloud/pushCloud : elles pointent maintenant sur la fusion V6.
+v41CloudSync=v6CloudSync;
+pullCloud=async function(write=false){return v6CloudSync(write,false)};
+pushCloud=async function(quiet=false){return v6CloudSync(true,quiet)};
+// Sauvegarde manuelle + version cloud, sans perdre les sauvegardes préexistantes.
+async function v6ManualSnapshot(){const done=await v6SnapshotCreate('Point manuel · V6',true);if(done&&cloudUser){await v6CloudSaveVersion('Point manuel · V6',false);await v6CloudLoadHistory()}}
+function v6FillModal(id){const c=catalog.find(x=>x.id===id);if(!c)return;
+ const o=collection[id]||{};
+ $('v6ModalWish').checked=!!o.wish;$('v6ModalPriority').value=String(o.wishPriority||2);$('v6ModalWishQty').value=String(o.wishQty||1);$('v6ModalTarget').value=o.targetPrice??'';
+ $('v6ModalBinder').value=o.binder||'';$('v6ModalPage').value=o.binderPage||'';$('v6ModalSlot').value=o.binderSlot||'';$('v6ModalBox').value=o.box||'';
+ const p=v6Exact(c),history=p?(v6Extras.priceHistory[p.productId]||[]):[];
+ $('v6ModalPriceInfo').textContent=p?`Impression associée : ${p.productName} · ${eur(p.value)} · ${history.length} relevé(s) sauvegardé(s).`:'Aucun prix précis : associe d’abord la bonne impression Cardmarket dans cette fiche.';
+}
+const v6OldOpenModal=openModal;
+openModal=function(id){v6OldOpenModal(id);v6FillModal(id)};
+function v6SaveModal(){if(!modalId)return;
+ const num=id=>{const v=$(id).value.trim();return v===''?'':Math.max(0,Math.floor(Number(v)||0))};
+ const target=$('v6ModalTarget').value.trim();const v=target===''?null:Math.max(0,Number(target)||0);
+ v6CardUpdate(modalId,{wish:$('v6ModalWish').checked,wishPriority:Number($('v6ModalPriority').value)||2,wishQty:Math.max(1,Number($('v6ModalWishQty').value)||1),targetPrice:v,binder:$('v6ModalBinder').value.trim().slice(0,70),binderPage:num('v6ModalPage'),binderSlot:num('v6ModalSlot'),box:$('v6ModalBox').value.trim().slice(0,70)},'Rangement / wishlist');
+ showBanner('Carte '+modalId+' : wishlist et rangement enregistrés.','ok');
+}
+function v6SafeLink(id){return 'https://www.cardmarket.com/fr/OnePiece/Products/Search?searchString='+encodeURIComponent(baseId(id))}
+// Interactions contrôlées (tous les identifiants viennent du catalogue déjà validé).
+document.querySelector('.v6-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-v6-tab]');if(b){v6View(b.dataset.v6Tab);b.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'})}});
+for(const id of ['v6BinderSet','v6BinderColor','v6BinderRarity','v6BinderStatus','v6BinderSort','v6BinderSearch'])$(id).addEventListener(id==='v6BinderSearch'?'input':'change',()=>{v6BinderPage=0;v6RenderBinder()});
+$('v6BinderPrev').addEventListener('click',()=>{v6BinderPage=Math.max(0,v6BinderPage-1);v6RenderBinder()});
+$('v6BinderNext').addEventListener('click',()=>{v6BinderPage++;v6RenderBinder()});
+$('v6BinderCards').addEventListener('click',e=>{
+ const b=e.target.closest('[data-v6detail],[data-v6plus],[data-v6minus]');if(!b)return;
+ if(b.dataset.v6detail)openModal(b.dataset.v6detail);
+ else if(b.dataset.v6plus)setQty(b.dataset.v6plus,getQty(b.dataset.v6plus)+1);
+ else if(b.dataset.v6minus)setQty(b.dataset.v6minus,getQty(b.dataset.v6minus)-1);
+});
+$('v6BinderCards').addEventListener('change',e=>{if(e.target.matches('[data-v6qty]'))setQty(e.target.dataset.v6qty,e.target.checked?Math.max(1,getQty(e.target.dataset.v6qty)):0)});
+$('v6Budget').addEventListener('change',e=>{const n=e.target.value.trim();v6Extras.settings.budget=n===''?null:Math.max(0,Number(n)||0);v6Extras.settings.updatedAt=v6Now();v6SaveExtra();v6Event('Budget','','Budget '+(n===''?'retiré':eur(v6Extras.settings.budget)));scheduleCloudSave();v6RefreshDashboard();v6RenderWishlist()});
+for(const id of ['v6WishScope','v6WishPriorityFilter','v6WishSearch'])$(id).addEventListener(id==='v6WishSearch'?'input':'change',v6RenderWishlist);
+$('v6WishDiscover').addEventListener('click',()=>{v6View('catalogue');$('status').value='missing';page=0;renderList();document.querySelector('.layout').scrollIntoView({behavior:'smooth'})});
+$('v6WishlistList').addEventListener('click',e=>{const target=e.target.closest('[data-v6detail],[data-v6remove]');if(!target)return;if(target.dataset.v6detail)openModal(target.dataset.v6detail);else v6CardUpdate(target.dataset.v6remove,{wish:false},'Retirer wishlist')});
+$('v6PanelMarket').addEventListener('click',e=>{const target=e.target.closest('[data-v6detail]');if(target)openModal(target.dataset.v6detail)});
+$('v6PricesRefresh').addEventListener('click',fetchPriceData);
+$('v6HistoryCard').addEventListener('change',v6DrawHistoryChart);
+$('v6AlertThreshold').addEventListener('change',e=>{v6Extras.settings.alertPercent=Math.max(1,Math.min(90,Number(e.target.value)||15));v6Extras.settings.updatedAt=v6Now();v6SaveExtra();scheduleCloudSave();v6RenderMarket();v6RefreshDashboard()});
+$('v6CreateSnapshot').addEventListener('click',v6ManualSnapshot);
+$('v6DownloadBackup').addEventListener('click',exportBackup);
+$('v6CloudOpen').addEventListener('click',()=>{$('cloudSettings').open=true;$('cloudSettings').scrollIntoView({behavior:'smooth'})});
+$('v6CloudHistoryRefresh').addEventListener('click',v6CloudLoadHistory);
+$('v6SnapshotList').addEventListener('click',async e=>{const b=e.target.closest('[data-v6restore]');if(!b)return;const rows=await v6DBAll();const row=rows.find(x=>x.id===b.dataset.v6restore);if(row)await v6RestorePayload(row.payload,row.reason)});
+$('v6HistoryCloud').addEventListener('click',async e=>{const b=e.target.closest('[data-v6restorecloud]');if(b)await v6RestoreCloud(b.dataset.v6restorecloud)});
+$('v6SaveModal').addEventListener('click',v6SaveModal);
+$('modalCmProduct').addEventListener('change',()=>{if(!modalId)return;v6Event('Produit Cardmarket',modalId,collection[modalId]?.cmProductId?'Produit '+collection[modalId].cmProductId:'Association retirée');v6RefreshDashboard();if(v6Tab==='market')v6RenderMarket()});
+$('modalNotes').addEventListener('change',()=>{if(modalId)v6Event('Notes',modalId,'Note modifiée')});
+$('photoUrlSaveV5').addEventListener('click',()=>{if(modalId)v6Event('Photo',modalId,'Lien photo mis à jour')});
+// Photos V5 : extension du cache sur le classeur et la liste d'achats, sans altérer leurs URL exactes.
+for(const [code,label] of RARITY){const op=document.createElement('option');op.value=code;op.textContent=label;$('v6BinderRarity').append(op)}
+// Conserver une sauvegarde quotidienne même sans cloud : pas d'historique inventé avant la V6.
+setTimeout(async()=>{
+ if(Object.keys(collection).length){const day=v6Now().slice(0,10),key='op-tcg-v6-last-daily-snapshot';
+ if(localStorage.getItem(key)!==day){const ok=await v6SnapshotCreate('Copie quotidienne '+day,false);if(ok)localStorage.setItem(key,day)}
+ }
+ if(cmPrices.size){v6CaptureCurrentPrices()}
+},2600);
+v6View('catalogue');v6RefreshDashboard();
 
 updateStorageState();
 loadCatalog();

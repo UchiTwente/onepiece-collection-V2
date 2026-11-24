@@ -1,4 +1,4 @@
-const SHELL='onepiece-app-v5-20261123';
+const SHELL='onepiece-app-v6-20261123';
 const PHOTOS='onepiece-confirmed-photos-v5';
 const FILES=['./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(SHELL).then(cache=>cache.addAll(FILES)));self.skipWaiting()});
